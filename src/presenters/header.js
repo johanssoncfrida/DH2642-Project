@@ -1,26 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import SignedInLinks from "./signedInLinks";
 import SignedOutLinks from "./signedOutLinks";
 import { connect } from "react-redux";
+import HeaderView from '../views/headerView'
 
 const Header = (props) => {
   const { auth, profile } = props;
-  // console.log(auth);
   const links = auth.uid ? (
     <SignedInLinks profile={profile} />
   ) : (
     <SignedOutLinks />
   );
+
+  const goTo = (auth.uid) ? "beforequiz" : "/"
+
   return (
-    <nav className="nav-wrapper black">
-      <div className="container">
-        <Link to="/" className="brand-logo">
-          MovieQuizinezz
-        </Link>
-        {links}
-      </div>
-    </nav>
+    HeaderView({goTo, links})
   );
 };
 
