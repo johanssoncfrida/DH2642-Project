@@ -4,15 +4,21 @@ import SignedInLinks from "./signedInLinks";
 import SignedOutLinks from "./signedOutLinks";
 import { connect } from "react-redux";
 
-const Header = () => {
+const Header = (props) => {
+  const { auth, profile } = props;
+  // console.log(auth);
+  const links = auth.uid ? (
+    <SignedInLinks profile={profile} />
+  ) : (
+    <SignedOutLinks />
+  );
   return (
     <nav className="nav-wrapper grey darken-3">
       <div className="container">
         <Link to="/" className="brand-logo">
           Quizinezz
         </Link>
-        <SignedInLinks />
-        <SignedOutLinks />
+        {links}
       </div>
     </nav>
   );
@@ -20,7 +26,10 @@ const Header = () => {
 
 const mapStateToProps = (state) => {
   console.log(state);
-  return {};
+  return {
+    auth: state.firebase.auth,
+    profile: state.firebase.profile,
+  };
 };
 
 export default connect(mapStateToProps)(Header);
