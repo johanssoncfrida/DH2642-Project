@@ -1,43 +1,26 @@
 import React, { Component } from "react";
-import HighScore from "./highScore";
-import ProjectList from "./projectList";
-import { connect } from "react-redux";
-import { firestoreConnect } from "react-redux-firebase";
-import { compose } from "redux";
-import { Redirect } from "react-router-dom";
+import { NavLink } from 'react-router-dom'
 
 class HomePage extends Component {
   render() {
-    //console.log(this.props);
-    const { projects, auth } = this.props;
-
-    if (!auth.uid) {
-      return <Redirect to="/signin" />;
-    }
 
     return (
-      <div className="dashboard container">
-        <div className="row">
-          <div className="col s12 m6">
-            <ProjectList projects={projects} />
-          </div>
-          <div className="col s12 m5 offset-m1">
-            <HighScore />
-          </div>
-        </div>
+      <div className="homepage container">
+              <br />
+              <br />
+              <h1 className="header center orange-text">MovieQuizinezz</h1>
+              <div className="row center">
+                <h5 className="header col s12 light">Welcome to this quiz!</h5>
+              </div>
+              <div className="row center">
+                  <NavLink to="/signin" className="btn btn-large orange hoverable">Sign in</NavLink>
+                  <NavLink to="/signup" className="btn btn-large waves-effect waves-light orange">Sign up</NavLink>
+              </div>
+
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    projects: state.firestore.ordered.projects,
-    auth: state.firebase.auth,
-  };
-};
 
-export default compose(
-  firestoreConnect(() => ["projects"]),
-  connect(mapStateToProps)
-)(HomePage);
+export default HomePage;
