@@ -7,10 +7,10 @@ const SignedInLinks = (props) => {
   return (
     <ul className="right">
       <li>
-        <NavLink to="/create">New Quiz</NavLink>
+        <NavLink to="/beforeQuiz">New Quiz</NavLink>
       </li>
       <li>
-        <a onClick={props.signOut}>Log Out</a>
+        <a onClick={props.signOut}>Sign Out</a>
       </li>
       <li>
         <NavLink to="/" className="btn btn-floating red darken-4">  {/*#832023, 551317*/}

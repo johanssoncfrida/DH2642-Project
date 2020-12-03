@@ -16,14 +16,20 @@ class SignUp extends Component {
       [e.target.id]: e.target.value,
     });
   };
+  handleChangeRadio = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.signUp(this.state);
   };
+
   render() {
     const { auth, authError } = this.props;
     if (auth.uid) {
-      return <Redirect to="/" />;
+      return <Redirect to="/beforeQuiz" />;
     }
     return (
       <div className="container">
@@ -38,13 +44,31 @@ class SignUp extends Component {
           <div className="input-field">
             <input placeholder="Username" type="text" id="username" onChange={this.handleChange} />
           </div>
+
           <div className="input-field">
-            <input placeholder="Favorite Actor" type="text" id="favoriteActor"
-              onChange={this.handleChange}
-            />
+            <select className="browser-default" id="favoriteActor" defaultValue="default" onChange={this.handleChange}>
+              <option value="default" disabled>Favorite Actor</option>
+              <option value="Leonardo DiCaprio">Leonardo Dicaprio</option>
+              <option value="Kate Winslet">Kate Winslet</option>
+              <option value="Other">Other</option>
+            </select>
           </div>
-          <div className="input-field">
-            <input placeholder="Gender" type="text" id="gender" onChange={this.handleChange} />
+
+          <div action="#" className="radio" onChange={this.handleChangeRadio}>
+            <p>
+              <label>
+                <input className="with-gap" name="gender" type="radio" value="male"/>
+                <span>Male</span>
+              </label>
+              <label>
+                <input className="with-gap" name="gender" type="radio" value="female"/>
+                <span>Female</span>
+              </label>
+              <label>
+                <input className="with-gap" name="gender" type="radio" value="other"/>
+                <span>Other</span>
+              </label>
+            </p>
           </div>
 
           <div className="input-field">

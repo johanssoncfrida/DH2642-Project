@@ -1,11 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
+import { resetQuestion } from "../store/actions/quizActions";
+import { resetScore } from "../store/actions/quizActions";
 
 class BeforeQuiz extends Component {
+
+  handleStart = () => {
+    this.props.resetQuestion();
+    this.props.resetScore();
+  }
+
   render() {
-    //console.log(this.props);
     const { auth } = this.props;
 
     if (!auth.uid) {
@@ -26,7 +33,7 @@ class BeforeQuiz extends Component {
             <br />
             <br />
             <div className="row center">
-              <NavLink to="/" className="btn btn-large orange hoverable">Start Quiz!</NavLink>
+              <NavLink to="/quiz" className="btn btn-large orange hoverable pulse" onClick={ () => this.handleStart()}>Start Quiz!</NavLink>
             </div>
             <div className="row center">
               <NavLink to="/" className="btn btn-small waves-effect waves-light orange">Instructions</NavLink>
@@ -49,4 +56,11 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(BeforeQuiz);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    resetQuestion: () => dispatch(resetQuestion()),
+    resetScore: () => dispatch(resetScore()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(BeforeQuiz);

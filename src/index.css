@@ -21,7 +21,16 @@ form {
   margin-top: 60px;
 }
 
-form button, from h5 {
+form.radio {
+  padding: 0px;
+  margin-top: 0px;
+}
+
+label {
+  margin-right: 80px;
+}
+
+form button, form h5 {
   margin: 20px 0;
 }
 
@@ -29,11 +38,40 @@ input[type=text]:not(.browser-default):focus:not([readonly]),
 input[type=email]:not(.browser-default):focus:not([readonly]),
 input[type=password]:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]){
-  border-color: #ec407a;
+  border-color: maroon;
   box-shadow: none;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.brand-logo>img {
+  height: 64px;
+  padding: 0px;
+  width: auto; 
+}
+
+.no-uppercase {
+  text-transform: none;
+  background-color: white;
+  color: black;
+}
+
+.no-uppercase:hover {
+  background: maroon;
+  color: white;
+}
+
+#profilePicture {
+  height: 240px;
+}
+
+.highscore {
+  margin-left: 180px;
+}
+
+.profile {
+  margin-right: 180px;
 }
