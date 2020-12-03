@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-const AfterQuizView = (score, username) => {
+const AfterQuizView = (score, username, handleStart) => {
   return (
     <div className="afterQuiz container white-text">
       <div className="row center" id="textdivInAfterquiz">
@@ -16,9 +16,9 @@ const AfterQuizView = (score, username) => {
       </div>
       <div className="row center" id="textAfterquiz">
         <h4>You can do better!</h4>
-        <NavLink
-          to="/quiz"
+        <NavLink to="/quiz"
           className="btn btn-large floating red darken-4 pulse"
+          onClick={() => handleStart()}
         >
           Try again!
         </NavLink>
