@@ -10,10 +10,13 @@ const SignedInLinks = (props) => {
         <NavLink to="/beforeQuiz">New Quiz</NavLink>
       </li>
       <li>
+        {/*eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <a onClick={props.signOut}>Sign Out</a>
       </li>
       <li>
-        <NavLink to="/" className="btn btn-floating red darken-4">  {/*#832023, 551317*/}
+        <NavLink to="/profile" className="btn btn-floating red darken-4">
+          {" "}
+          {/*#832023, 551317*/}
           {props.profile.initial}
         </NavLink>
       </li>

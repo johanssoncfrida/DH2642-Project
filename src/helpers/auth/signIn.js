@@ -30,13 +30,23 @@ class SignIn extends Component {
         <form onSubmit={this.handleSubmit} className="white">
           <h5 className="grey-text text-darken-3">Sign In</h5>
           <div className="input-field">
-            <input placeholder="Email" type="email" id="email" onChange={this.handleChange} />
+            <input
+              placeholder="Email"
+              type="email"
+              id="email"
+              onChange={this.handleChange}
+            />
           </div>
           <div className="input-field">
-            <input placeholder="Password" type="password" id="password" onChange={this.handleChange} />
+            <input
+              placeholder="Password"
+              type="password"
+              id="password"
+              onChange={this.handleChange}
+            />
           </div>
           <div className="input-field">
-            <button className="btn pink lighten-1 z-depth-0">Login</button>
+            <button className="btn red darken-4 z-depth-0">Login</button>
             <div className="red-text center">
               {authError ? <p>{authError}</p> : null}
             </div>
