@@ -16,12 +16,13 @@ class AfterQuiz extends Component {
     const { auth } = this.props;
     const { score } = this.props;
     const { profile } = this.props;
+    const { totalTime } = this.props;
     const username = profile.username;
 
     if (!auth.uid) {
       return <Redirect to="/" />;
     }
-    return AfterQuizView(score, username, this.handleStart);
+    return AfterQuizView(score, username, this.handleStart, totalTime);
   }
 }
 
@@ -30,6 +31,7 @@ const mapStateToProps = (state) => {
     auth: state.firebase.auth,
     profile: state.firebase.profile,
     score: state.quiz.currentScore,
+    totalTime: state.quiz.totalTime,
   };
 };
 

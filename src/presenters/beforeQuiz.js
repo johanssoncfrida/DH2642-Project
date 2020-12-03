@@ -5,6 +5,7 @@ import M from "materialize-css";
 import BeforeQuizView from "../views/beforeQuizView";
 import { resetQuestion } from "../store/actions/quizActions";
 import { resetScore } from "../store/actions/quizActions";
+import { startTime } from "../store/actions/quizActions";
 
 class BeforeQuiz extends Component {
   componentDidMount() {
@@ -15,6 +16,7 @@ class BeforeQuiz extends Component {
   handleStart = () => {
     this.props.resetQuestion();
     this.props.resetScore();
+    this.props.startTime(Date.now());
   };
 
   setModal = (m) => {
@@ -46,6 +48,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     resetQuestion: () => dispatch(resetQuestion()),
     resetScore: () => dispatch(resetScore()),
+    startTime: (time) => dispatch(startTime(time)),
   };
 };
 

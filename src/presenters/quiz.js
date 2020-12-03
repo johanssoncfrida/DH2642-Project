@@ -5,12 +5,20 @@ import QuizView from "../views/quizView";
 import AfterQuizView from "../views/afterQuizView";
 import { nextQuestion } from "../store/actions/quizActions";
 import { updateScore } from "../store/actions/quizActions";
+import { totalTime } from "../store/actions/quizActions";
+import { saveScore } from "../store/actions/quizActions";
 
 class Quiz extends Component {
   handleClick = (e) => {
     //e.preventDefault();
     if (e === true) {
       this.props.updateScore(this.props.score);
+    }
+    if (this.props.questionNr === 2) {
+      //this.props.endTime(Date.now());
+      const totalTime = ( Date.now() - this.props.startTime ) / 1000;
+      this.props.saveScore(this.props.score, totalTime);
+      this.props.totalTime(totalTime);
     }
     this.props.nextQuestion(this.props.questionNr);
   }
@@ -19,7 +27,6 @@ class Quiz extends Component {
     const { auth } = this.props;
     const { questions } = this.props;   // grabs the question-object of the props
     const { questionNr } = this.props;
-    const { score } = this.props;
 
     if (!auth.uid) {
       return <Redirect to="/" />;
@@ -48,6 +55,7 @@ const mapStateToProps = (state) => {
     questions: state.quiz.questions,
     questionNr: state.quiz.currentQuestionNr,
     score: state.quiz.currentScore,
+    startTime: state.quiz.startTime,
   };
 };
 
@@ -55,6 +63,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     nextQuestion: (questionNr) => dispatch(nextQuestion(questionNr)),
     updateScore: (score) => dispatch(updateScore(score)),
+    totalTime: (time) => dispatch(totalTime(time)),
+    saveScore: (score, totalTime) => dispatch(saveScore(score, totalTime)),
   };
 };
 

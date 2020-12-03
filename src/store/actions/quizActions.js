@@ -1,15 +1,20 @@
-export const saveScore = (score) => {
+export const saveScore = (score, totalTime) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         // make async call to db
         const firestore = getFirestore();
-        firestore.collection('scores').add({
+        const state = getState();
+        const username = state.firebase.profile.username;
+
+        firestore.collection('userScores').add({
             ...score,
-            username: 'TestUser',
-            createdAt: new Date()
+            username: username,
+            time: totalTime,
+            quizScore: score,
+            createdAt: new Date(),
         }).then(() => {
-            dispatch({type: 'ADD_SCORE', score: score});
+            dispatch({type: 'SAVE_SCORE', score: score});
         }).catch((err) => {
-            dispatch({ type: 'ADD_SCORE_ERROR', err });
+            dispatch({ type: 'SAVE_SCORE_ERROR', err });
         })
     }
 };
@@ -22,7 +27,6 @@ export const nextQuestion = (questionNr) => {
 };
 
 export const resetQuestion = () => {
-    //const questionNr = 0;
     return (dispatch, getState) => {
         dispatch({ type: 'RESET_QUESTION', newNr: 0 });
     }
@@ -36,8 +40,19 @@ export const updateScore = (score) => {
 };
 
 export const resetScore = () => {
-    //const score = 0;
     return (dispatch, getState) => {
         dispatch({ type: 'RESET_SCORE', newScore: 0 });
+    }
+};
+
+export const startTime = (time) => {
+    return (dispatch, getState) => {
+        dispatch({ type: 'START_TIME', startTime: time });
+    }
+};
+
+export const totalTime = (time) => {
+    return (dispatch, getState) => {
+        dispatch({ type: 'TOTAL_TIME', totalTime: time });
     }
 };

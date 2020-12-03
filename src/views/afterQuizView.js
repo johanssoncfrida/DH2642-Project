@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-const AfterQuizView = (score, username, handleStart) => {
+const AfterQuizView = (score, username, handleStart, totalTime) => {
   return (
     <div className="afterQuiz container white-text">
       <div className="row center" id="textdivInAfterquiz">
@@ -10,8 +10,8 @@ const AfterQuizView = (score, username, handleStart) => {
 
         <div className="row center " id="textAfterquiz">
           <h4> {score}/10 points!</h4>
-
           <br />
+          <h4>This took {totalTime} seconds.</h4>
         </div>
       </div>
       <div className="row center" id="textAfterquiz">

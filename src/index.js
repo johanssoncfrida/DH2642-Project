@@ -50,7 +50,6 @@ function AuthIsLoaded({ children }) {
 }
 
 ReactDOM.render(
-  <React.StrictMode>
     <Provider store={store}>
       <ReactReduxFirebaseProvider {...rrfProps}>
         <AuthIsLoaded>
@@ -59,7 +58,6 @@ ReactDOM.render(
       </ReactReduxFirebaseProvider>
     </Provider>
     ,
-  </React.StrictMode>,
   document.getElementById("root")
 );
 

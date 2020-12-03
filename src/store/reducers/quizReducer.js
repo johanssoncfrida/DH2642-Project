@@ -27,16 +27,18 @@ const initState = {
   ],
   currentQuestionNr: 0,
   currentScore: 0,
+  startTime: 0,
+  totalTime: 0,
 };
 
 const quizReducer = (state = initState, action) => {
   switch (action.type) {
-    /*case 'SAVE_SCORE':
+    case 'SAVE_SCORE':
             console.log('save score', action.score)
             return state;
         case 'SAVE_SCORE_ERROR':
             console.log('save score error', action.err);
-            return state;*/
+            return state;
     case "NEXT_QUESTION":
       //console.log('next question', action.newNr);
       return {
@@ -61,6 +63,18 @@ const quizReducer = (state = initState, action) => {
         ...state,
         currentScore: action.newScore,
       };
+      case "START_TIME":
+        console.log('start time', action.startTime);
+        return {
+          ...state,
+          startTime: action.startTime,
+        };
+        case "TOTAL_TIME":
+          console.log('total time', action.totalTime);
+          return {
+            ...state,
+            totalTime: action.totalTime,
+          };
     default:
       return state;
   }
