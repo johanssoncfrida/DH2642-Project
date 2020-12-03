@@ -1,29 +1,36 @@
+import React, { Component } from "react";
 import HighScoreView from "../views/highScoreView";
+import { connect } from "react-redux";
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
 
-const HighScore = () => {
-  let highscores = [
-    {
-      score: 5,
-      time: "3m 15s",
-    },
-    {
-      score: 5,
-      time: "10m 12s",
-    },
-    {
-      score: 3,
-      time: "4m 6s",
-    },
-    {
-      score: 2,
-      time: "6m 33s",
-    },
-    {
-      score: 1,
-      time: "7m 42s",
-    },
-  ];
-  return HighScoreView({ highscores });
+class HighScore extends Component {
+  render() {
+    const { userScores } = this.props;
+
+    let items;
+    if (userScores) {
+      let temp = userScores.slice(0);
+      temp.sort((a, b) => b.quizScore - a.quizScore || a.time - b.time);
+      console.log(userScores);
+      items = temp.slice(0, 5);
+      return HighScoreView({ items });
+    }
+
+    return <div>No highscores</div>;
+  }
+}
+
+const mapStateToProps = (state) => {
+  //console.log(state);
+  return {
+    userScores: state.firestore.ordered.userScores,
+  };
 };
 
-export default HighScore;
+export default compose(
+  connect(mapStateToProps),
+  firestoreConnect([
+    { collection: "userScores", orderBy: ["quizScore", "desc"] },
+  ])
+)(HighScore);

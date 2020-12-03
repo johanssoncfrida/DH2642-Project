@@ -1,4 +1,4 @@
-const HighScoreView = ({ highscores }) => {
+const HighScoreView = ({ items }) => {
   return (
     <div className="card grey lighten-2 ">
       <div className="card-content">
@@ -12,10 +12,11 @@ const HighScoreView = ({ highscores }) => {
             </tr>
           </thead>
           <tbody>
-            {highscores.map((hs, index) => (
+            {console.log(items)}
+            {items.map((hs, index) => (
               <tr key={index}>
-                <td>User {index + 1}</td>
-                <td>{hs.score} p</td>
+                <td>{hs.username}</td>
+                <td>{hs.quizScore} p</td>
                 <td>{hs.time}</td>
               </tr>
             ))}

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import QuizView from "../views/quizView";
-import AfterQuizView from "../views/afterQuizView";
 import { nextQuestion } from "../store/actions/quizActions";
 import { updateScore } from "../store/actions/quizActions";
 import { totalTime } from "../store/actions/quizActions";
@@ -14,18 +13,20 @@ class Quiz extends Component {
     if (e === true) {
       this.props.updateScore(this.props.score);
     }
+
     if (this.props.questionNr === 2) {
       //this.props.endTime(Date.now());
-      const totalTime = ( Date.now() - this.props.startTime ) / 1000;
-      this.props.saveScore(this.props.score, totalTime);
+      const totalTime = (Date.now() - this.props.startTime) / 1000;
+
+      this.props.saveScore(totalTime);
       this.props.totalTime(totalTime);
     }
     this.props.nextQuestion(this.props.questionNr);
-  }
+  };
 
   render() {
     const { auth } = this.props;
-    const { questions } = this.props;   // grabs the question-object of the props
+    const { questions } = this.props; // grabs the question-object of the props
     const { questionNr } = this.props;
 
     if (!auth.uid) {
@@ -34,18 +35,15 @@ class Quiz extends Component {
 
     if (questionNr < 3) {
       return (
-        <QuizView 
-        question={questions[questionNr]}
-        questionNr={questionNr} 
-        handleClick={this.handleClick} />
-     );
-    }
-    else {
-      return (
-        <Redirect to="/afterQuiz" />
+        <QuizView
+          question={questions[questionNr]}
+          questionNr={questionNr}
+          handleClick={this.handleClick}
+        />
       );
+    } else {
+      return <Redirect to="/afterQuiz" />;
     }
-    
   }
 }
 
@@ -64,7 +62,7 @@ const mapDispatchToProps = (dispatch) => {
     nextQuestion: (questionNr) => dispatch(nextQuestion(questionNr)),
     updateScore: (score) => dispatch(updateScore(score)),
     totalTime: (time) => dispatch(totalTime(time)),
-    saveScore: (score, totalTime) => dispatch(saveScore(score, totalTime)),
+    saveScore: (totalTime) => dispatch(saveScore(totalTime)),
   };
 };
 
