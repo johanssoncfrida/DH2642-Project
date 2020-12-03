@@ -52,7 +52,21 @@ class App extends Component {
               </div>
             </Route>
             <Route path="/quiz" component={Quiz} />
-            <Route path="/afterquiz" component={AfterQuiz} />
+            <Route path="/afterquiz">
+              <div className="row">
+                <div className="col s4">
+                  <div className="highscore">
+                    <HighScore />
+                  </div>
+                </div>
+                <div className="col s4">
+                  <div className="afterQuiz">
+                    <AfterQuiz />
+                  </div>
+                </div>
+                <div className="col s4"></div>
+              </div>
+            </Route>
           </Switch>
         </div>
       </BrowserRouter>

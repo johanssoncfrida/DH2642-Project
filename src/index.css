@@ -75,3 +75,21 @@ code {
 .profile {
   margin-right: 180px;
 }
+/*Radio buttons*/
+[type="radio"]:checked + span:after, 
+[type="radio"].with-gap:checked + span:before,
+[type="radio"].with-gap:checked + span:after {
+  border: 2px solid maroon;
+}
+ 
+[type="radio"]:checked + span:after,
+[type="radio"].with-gap:checked + span:after {
+  background-color: maroon;
+}
+
+/*AfterquizView*/
+
+#textAfterquiz{
+  color:hsl(357, 59%, 40%);
+  font-family: 'Courier New';
+}
