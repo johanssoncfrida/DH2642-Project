@@ -54,11 +54,11 @@ class App extends Component {
             </Route>
             <Route path="/quiz" component={Quiz} />
             <Route path="/afterquiz">
-              <div className="row center grey" id="afterquizView">
-                <div className="col s7 " id="afterQuiz">
+              <div className="row center" id="afterquizView">
+                <div className="col s7 black" id="afterQuiz">
                   <AfterQuiz />
                 </div>
-                <div className="highscore col s4" >
+                <div className="highscore col s4">
                   <HighScore />
                 </div>
               </div>

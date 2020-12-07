@@ -12,17 +12,31 @@ class HighScore extends Component {
     if (userScores) {
       let temp = userScores.slice(0);
       temp.sort((a, b) => b.quizScore - a.quizScore || a.time - b.time);
-      console.log(userScores);
       items = temp.slice(0, 5);
       return HighScoreView({ items });
     }
 
-    return <div>No highscores</div>;
+    return (
+      <div className="center">
+        <div className="preloader-wrapper active">
+          <div className="spinner-layer spinner-red-only">
+            <div className="circle-clipper left">
+              <div className="circle"></div>
+            </div>
+            <div className="gap-patch">
+              <div className="circle"></div>
+            </div>
+            <div className="circle-clipper right">
+              <div className="circle"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   }
 }
 
 const mapStateToProps = (state) => {
-  //console.log(state);
   return {
     userScores: state.firestore.ordered.userScores,
   };
