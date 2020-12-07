@@ -5,11 +5,11 @@ import HomePage from "./presenters/homePage";
 import BeforeQuiz from "./presenters/beforeQuiz";
 import SignIn from "./helpers/auth/signIn";
 import SignUp from "./helpers/auth/signUp";
-import CreateProject from "./presenters/createProject";
 import Quiz from "./presenters/quiz";
 import AfterQuiz from "./presenters/afterQuiz";
 import ProfilePage from "./presenters/profilePage";
 import HighScore from "./presenters/highScore";
+import TopScores from "./presenters/topScores";
 
 class App extends Component {
   render() {
@@ -21,21 +21,22 @@ class App extends Component {
             <Route exact path="/" component={HomePage} />
             <Route path="/beforequiz">
               <div className="row">
-                <div className="col s3 ">
+                <div className="col s4">
                   <div className="highscore">
                     <HighScore />
                   </div>
                 </div>
-                <div className="col s6">
+                <div className="col s4">
                   <div className="beforeQuiz">
                     <BeforeQuiz />
                   </div>
                 </div>
+                <div className="col s4"></div>
               </div>
             </Route>
             <Route path="/signin" component={SignIn} />
             <Route path="/signup" component={SignUp} />
-            <Route path="/create" component={CreateProject} />
+            <Route path="/topScores" component={TopScores} />
 
             <Route path="/profile">
               <div className="row">
@@ -57,7 +58,7 @@ class App extends Component {
                 <div className="col s7 " id="afterQuiz">
                   <AfterQuiz />
                 </div>
-                <div className="col s2 " id="highscoreAfterquiz">
+                <div className="highscore col s4" >
                   <HighScore />
                 </div>
               </div>

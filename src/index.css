@@ -90,8 +90,6 @@ code {
 
 /*AfterquizView*/
 
-/*AfterquizView*/
-
 #afterquizView {
   margin-top: 200px;
   width: 1000px;
@@ -148,23 +146,6 @@ code {
   }
 }
 
-#HighscoreBoard {
-  border: solid;
-  box-shadow: 5px 10px 18px black;
-  background-image: linear-gradient(#c70223, #2a0004);
-}
-#highscoreAfterquiz {
-  margin-top: 10px;
-  width: 300px;
-  float: right;
-}
-#Highscore {
-  color: rgba(255, 255, 255, 0.863);
-}
-.highscore {
-  margin-top: 60px;
-}
-
 #informationcard {
   background: url("./img/information1.jpg") no-repeat;
   background-size: 100%;
@@ -178,4 +159,50 @@ code {
 #modal1 {
   width: 600px;
   border: groove;
+}
+
+/*TopScoresView*/
+.topscores tbody {
+  display: block;
+  height: 400px;
+  overflow: auto;
+}
+.topscores thead,
+.topscores tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+.topscores thead {
+  width: calc(100% - 1em);
+}
+.topscores table {
+  width: 100%;
+}
+.card-panel {
+  display: block;
+  width: 1000px;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+}
+
+.topscores #data:hover {
+  background: rgba(128, 0, 0, 0.7);
+}
+
+.card {
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+}
+
+.profile.card-content {
+  color: black;
+}
+
+#profile {
+  background: rgba(59, 0, 0, 1);
+  color: white;
 }

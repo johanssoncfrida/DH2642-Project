@@ -2,14 +2,14 @@ import image from "../img/catprofilepicture.jpeg";
 
 const ProfilePageView = ({ profile, highscores }) => {
   return (
-    <div className="card grey lighten-2 ">
+    <div className="card" id="profile">
       <div className="card-content light">
         <div className="card grey lighten-4 horizontal">
           <div className="card-image">
             <img src={image} id="profilePicture" alt=" " />
           </div>
 
-          <div className="card-content">
+          <div className="profile card-content">
             <h6>Username: {profile.username}</h6>
             <br />
             <h6>Favorite Actor: {profile.favoriteActor}</h6>
