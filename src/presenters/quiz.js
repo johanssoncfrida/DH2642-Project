@@ -14,7 +14,7 @@ class Quiz extends Component {
   };
 
   componentDidMount() {
-    fetch("http://imdb-api.com/API/Top250Movies/k_2dg3mbgu")
+    fetch("http://imdb-api.com/API/Top250Movies/k_s58nmnri")
       .then((response) => response.json())
       .then((data) => this.shuffleAndSet(data.items))
       .catch((err) => console.log(err));
@@ -26,100 +26,132 @@ class Quiz extends Component {
   }
 
   setQuestions() {
-    this.setState({
-      questions: [
+    if (this.state.topListData[0]) {
+      this.setState(
         {
-          questionText:
-            "What's the premiere year of " +
-            this.state.topListData[0].title +
-            "?",
-          questionAnswer: "" + this.state.topListData[0].year,
-          answerOptions: [
+          questions: [
             {
-              answerText: "" + this.state.topListData[0].year,
-              isCorrect: true,
-              id: 1,
+              questionText:
+                "What's the premiere year of " +
+                this.state.topListData[0].title +
+                "?",
+              questionAnswer: "" + this.state.topListData[0].year,
+              answerOptions: [
+                {
+                  answerText: "" + this.state.topListData[0].year,
+                  isCorrect: true,
+                  id: 1,
+                },
+                {
+                  answerText: "" + this.state.topListData[230].year,
+                  isCorrect: false,
+                  id: 2,
+                },
+                {
+                  answerText: "" + this.state.topListData[231].year,
+                  isCorrect: false,
+                  id: 3,
+                },
+              ],
             },
             {
-              answerText: "" + this.state.topListData[230].year,
-              isCorrect: false,
-              id: 2,
+              questionText:
+                "Who is the director for " +
+                this.state.topListData[1].title +
+                "?",
+              questionAnswer: "" + this.state.topListData[1].crew.split(",")[0],
+              answerOptions: [
+                {
+                  answerText: "" + this.state.topListData[1].crew.split(",")[0],
+                  isCorrect: true,
+                  id: 1,
+                },
+                {
+                  answerText:
+                    "" + this.state.topListData[220].crew.split(",")[0],
+                  isCorrect: false,
+                  id: 2,
+                },
+                {
+                  answerText:
+                    "" + this.state.topListData[221].crew.split(",")[0],
+                  isCorrect: false,
+                  id: 3,
+                },
+              ],
             },
             {
-              answerText: "" + this.state.topListData[231].year,
-              isCorrect: false,
-              id: 3,
+              questionText:
+                "What movie has rank " + this.state.topListData[2].rank + "?",
+              questionAnswer: "" + this.state.topListData[2].title,
+              answerOptions: [
+                {
+                  answerText: "" + this.state.topListData[2].title,
+                  isCorrect: true,
+                  id: 1,
+                },
+                {
+                  answerText: "" + this.state.topListData[210].title,
+                  isCorrect: false,
+                  id: 2,
+                },
+                {
+                  answerText: "" + this.state.topListData[211].title,
+                  isCorrect: false,
+                  id: 3,
+                },
+              ],
+            },
+            {
+              questionText:
+                "Who is a main actor in " +
+                this.state.topListData[3].title +
+                "?",
+              questionAnswer: "" + this.state.topListData[3].crew.split(",")[1],
+              answerOptions: [
+                {
+                  answerText: "" + this.state.topListData[3].crew.split(",")[1],
+                  isCorrect: true,
+                  id: 1,
+                },
+                {
+                  answerText:
+                    "" + this.state.topListData[200].crew.split(",")[1],
+                  isCorrect: false,
+                  id: 2,
+                },
+                {
+                  answerText:
+                    "" + this.state.topListData[201].crew.split(",")[1],
+                  isCorrect: false,
+                  id: 3,
+                },
+              ],
             },
           ],
         },
-        {
-          questionText:
-            "Who is the director for " + this.state.topListData[1].title + "?",
-          questionAnswer: "" + this.state.topListData[1].crew.split(",")[0],
-          answerOptions: [
-            {
-              answerText: "" + this.state.topListData[1].crew.split(",")[0],
-              isCorrect: true,
-              id: 1,
-            },
-            {
-              answerText: "" + this.state.topListData[220].crew.split(",")[0],
-              isCorrect: false,
-              id: 2,
-            },
-            {
-              answerText: "" + this.state.topListData[221].crew.split(",")[0],
-              isCorrect: false,
-              id: 3,
-            },
-          ],
-        },
-        {
-          questionText:
-            "What movie has rank " + this.state.topListData[2].rank + "?",
-          questionAnswer: "" + this.state.topListData[2].title,
-          answerOptions: [
-            {
-              answerText: "" + this.state.topListData[2].title,
-              isCorrect: true,
-              id: 1,
-            },
-            {
-              answerText: "" + this.state.topListData[210].title,
-              isCorrect: false,
-              id: 2,
-            },
-            {
-              answerText: "" + this.state.topListData[211].title,
-              isCorrect: false,
-              id: 3,
-            },
-          ],
-        },
-        {
-          questionText:
-            "Who is a main actor in " + this.state.topListData[3].title + "?",
-          questionAnswer: "" + this.state.topListData[3].crew.split(",")[1],
-          answerOptions: [
-            {
-              answerText: "" + this.state.topListData[3].crew.split(",")[1],
-              isCorrect: true,
-              id: 1,
-            },
-            {
-              answerText: "" + this.state.topListData[200].crew.split(",")[1],
-              isCorrect: false,
-              id: 2,
-            },
-            {
-              answerText: "" + this.state.topListData[201].crew.split(",")[1],
-              isCorrect: false,
-              id: 3,
-            },
-          ],
-        },
-      ],
-    });
+        this.shuffleQuestions
+      );
+    }
+  }
+
+  shuffleQuestions() {
+    this.setState(
+      { questions: this.shuffleArray(this.state.questions) },
+      this.shuffleAnswerOptions
+    );
+  }
+
+  shuffleAnswerOptions() {
+    console.log("In shuffle answer options");
+
+    this.setState((state) => ({
+      questions: state.questions.map((elem) =>
+        Object.assign(elem, {
+          answerOptions: this.shuffleArray(elem.answerOptions),
+        })
+      ),
+    }));
   }
 
   shuffleArray(array) {

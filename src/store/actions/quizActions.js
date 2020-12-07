@@ -4,6 +4,7 @@ export const saveScore = (totalTime) => {
     const firestore = getFirestore();
     const state = getState();
     const username = state.firebase.profile.username;
+    const userId = state.firebase.auth.uid;
 
     firestore
       .collection("userScores")
@@ -13,6 +14,7 @@ export const saveScore = (totalTime) => {
         time: totalTime,
         quizScore: state.quiz.currentScore,
         createdAt: new Date(),
+        userId: userId,
       })
       .then(() => {
         dispatch({ type: "SAVE_SCORE", totalTime: totalTime });
