@@ -2,26 +2,26 @@ import { NavLink } from "react-router-dom";
 
 const AfterQuizView = (score, username, handleStart, totalTime) => {
   return (
-    <div className="afterQuiz container white-text">
-      <div className="row center" id="textdivInAfterquiz">
-        <h3 className="header col s12 " id="textAfterquiz">
-          Good job {username}, this is your result!
-        </h3>
+    <div className=" container  " id="afterQuiz">
+      <div className="row " id="textAfterquiz">
+        <h3 id="headerAfterquiz">Well done {username}!</h3>
 
-        <div className="row center " id="textAfterquiz">
-          <h4> {score}/10 points!</h4>
-          <br />
-          <h4>This took {totalTime} seconds.</h4>
+        <div className="row " id="textInAfterquiz">
+          <p>Your score: {score} of 10 points!</p>
+
+          <p>Your time: {totalTime} seconds.</p>
         </div>
-      </div>
-      <div className="row center" id="textAfterquiz">
-        <h4>You can do better!</h4>
-        <NavLink to="/quiz"
-          className="btn btn-large floating red darken-4 pulse"
-          onClick={() => handleStart()}
-        >
-          Try again!
-        </NavLink>
+
+        <div className="row ">
+          <NavLink
+            to="/quiz"
+            className="btn btn-large "
+            id="buttonAfterquiz"
+            onClick={() => handleStart()}
+          >
+            Try again!
+          </NavLink>
+        </div>
       </div>
     </div>
   );

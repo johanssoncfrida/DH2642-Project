@@ -1,7 +1,7 @@
 const HighScoreView = ({ items }) => {
   return (
-    <div className="card grey lighten-2 ">
-      <div className="card-content">
+    <div className="card " id="HighscoreBoard">
+      <div className="card-content" id="Highscore">
         <h4 className="center">Highscore</h4>
         <table>
           <thead>
@@ -17,7 +17,7 @@ const HighScoreView = ({ items }) => {
               <tr key={index}>
                 <td>{hs.username}</td>
                 <td>{hs.quizScore} p</td>
-                <td>{hs.time}</td>
+                <td>{hs.time} s</td>
               </tr>
             ))}
           </tbody>

@@ -26,19 +26,33 @@ const BeforeQuizView = ({ setModal, handleStart }) => {
             setModal(m);
           }}
           id="modal1"
-          className="modal"
+          className="modal "
         >
-          <div className="modal-content">
-            <h4>Instructions</h4>
-            <p>Here's few instructions on how to proceed.</p>
-            <p>Start a quiz.</p>
-            <p>Try to answer all questions.</p>
-            <p>Good luck with the quiz!</p>
-          </div>
-          <div className="modal-footer">
+          <div className="modal-content" id="informationcard">
+            <h2>Instructions</h2>
+
+            <div className="card-content">
+              <p>
+                Welcome to our moviequiz site! On this site you can test your
+                knowledge about the 250 top rated movies according to IMDB. Tell
+                your friends and you can all have your individual free account
+                and see who gets the highest score! The quiz have 10 questions
+                and each question has 3 alternatives. Check the alternative you
+                believe is the right answer and continue to the next question.
+                Every right answer gives you one point and the total score will
+                be ordered by points and the total time it took taking the quiz.
+              </p>
+              <p>
+                When your are done answering all the question press "Get result"
+                and you will get your score! If you are amongst the top 5 your
+                name will show on the highscoreboard! So what are you waiting
+                for? Lets get that score!
+              </p>
+            </div>
+
             <a
               href="#!"
-              className="modal-close waves-effect waves-green btn-flat"
+              className="modal-close waves-effect waves-green btn-flat white-text"
             >
               Close
             </a>

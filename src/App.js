@@ -21,26 +21,26 @@ class App extends Component {
             <Route exact path="/" component={HomePage} />
             <Route path="/beforequiz">
               <div className="row">
-                <div className="col s4">
+                <div className="col s3 ">
                   <div className="highscore">
                     <HighScore />
                   </div>
                 </div>
-                <div className="col s4">
+                <div className="col s6">
                   <div className="beforeQuiz">
                     <BeforeQuiz />
                   </div>
                 </div>
-                <div className="col s4"></div>
               </div>
             </Route>
             <Route path="/signin" component={SignIn} />
             <Route path="/signup" component={SignUp} />
             <Route path="/create" component={CreateProject} />
+
             <Route path="/profile">
               <div className="row">
-                <div className="col s4">
-                  <div className="highscore">
+                <div className="col s4 ">
+                  <div className="highscore ">
                     <HighScore />
                   </div>
                 </div>
@@ -53,18 +53,13 @@ class App extends Component {
             </Route>
             <Route path="/quiz" component={Quiz} />
             <Route path="/afterquiz">
-              <div className="row">
-                <div className="col s4">
-                  <div className="highscore">
-                    <HighScore />
-                  </div>
+              <div className="row center grey" id="afterquizView">
+                <div className="col s7 " id="afterQuiz">
+                  <AfterQuiz />
                 </div>
-                <div className="col s4">
-                  <div className="afterQuiz">
-                    <AfterQuiz />
-                  </div>
+                <div className="col s2 " id="highscoreAfterquiz">
+                  <HighScore />
                 </div>
-                <div className="col s4"></div>
               </div>
             </Route>
           </Switch>

@@ -4,12 +4,13 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { resetQuestion } from "../store/actions/quizActions";
 import { resetScore } from "../store/actions/quizActions";
+import { startTime } from "../store/actions/quizActions";
 
 class AfterQuiz extends Component {
-
   handleStart = () => {
     this.props.resetQuestion();
     this.props.resetScore();
+    this.props.startTime(Date.now());
   };
 
   render() {
@@ -39,6 +40,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     resetQuestion: () => dispatch(resetQuestion()),
     resetScore: () => dispatch(resetScore()),
+    startTime: (time) => dispatch(startTime(time)),
   };
 };
 
