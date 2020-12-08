@@ -23,24 +23,45 @@ class AfterQuiz extends Component {
     this.modal = m;
   };
 
+  goodScore = [
+    "Good job " + this.props.profile.username + "! Gollum says that you are his preeeecious!",
+    "Amazing work " + this.props.profile.username + "! Meryl Streep thinks that you are fantastic!",
+    "Truly with you" + this.props.profile.username + "the force is! Proud of you Yoda is.",
+    "Marvelous " + this.props.profile.username + "! Bond. James Bond congratulates you.",
+  ]
+
+  badScore = [
+    "Oh no " + this.props.profile.username + "... Dory says just keep swimming!",
+    "Houson we a problem... " + this.props.profile.username + " did not do great.",
+    "Hasta La Vista, " + this.props.profile.username + "! Please do better!",
+  ]
+
+
   render() {
     const { auth } = this.props;
     const { score } = this.props;
-    const { profile } = this.props;
     const { totalTime } = this.props;
     const { questions } = this.props;
-    const username = profile.username;
 
     if (!auth.uid) {
       return <Redirect to="/" />;
     }
+
+    let quizMessage = "";
+    if (this.props.score > 2) {
+      quizMessage = this.goodScore[Math.floor(Math.random() * this.goodScore.length)]
+    }
+    else {
+      quizMessage = this.badScore[Math.floor(Math.random() * this.badScore.length)]
+    }
+
     return AfterQuizView({
       score: score,
-      username: username,
       handleStart: this.handleStart,
       totalTime: totalTime,
       setModal: this.setModal,
       questions: questions,
+      message: quizMessage,
     });
   }
 }

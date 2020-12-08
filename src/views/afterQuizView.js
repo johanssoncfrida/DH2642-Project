@@ -1,21 +1,18 @@
 import { NavLink } from "react-router-dom";
 
 
-const AfterQuizView = ({ score, username, handleStart, totalTime, setModal, questions} ) => {
+const AfterQuizView = ({ score, handleStart, totalTime, setModal, questions, message} ) => {
   return (
     <div className=" container  " id="afterQuiz">
       <div className="row " id="textAfterquiz">
         <h3 id="headerAfterquiz">Quiz Result</h3>
-
+        <h5>{message}</h5>
         <br />
-        <div className="row " id="textInAfterquiz">
+        <div className="row ">
           <table>
             <tbody>
             <tr>
-              <td>Name: {username}</td>
-            </tr>
-            <tr>
-              <td>Your score: {score} of 10 points!</td>
+              <td>Your score: {score} of 5 points!</td>
             </tr>
             <tr>
               <td>Your time: {totalTime} seconds</td>
