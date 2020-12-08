@@ -1,6 +1,4 @@
-import image from "../img/catprofilepicture.jpeg";
-
-const ProfilePageView = ({ profile, highscores }) => {
+const ProfilePageView = ({ profile, highscores, image }) => {
   return (
     <div className="card" id="profile">
       <div className="card-content light">
@@ -9,7 +7,7 @@ const ProfilePageView = ({ profile, highscores }) => {
             <img src={image} id="profilePicture" alt=" " />
           </div>
 
-          <div className="profile card-content">
+          <div className="black-text card-content">
             <h6>Username: {profile.username}</h6>
             <br />
             <h6>Favorite Actor: {profile.favoriteActor}</h6>
@@ -33,8 +31,8 @@ const ProfilePageView = ({ profile, highscores }) => {
               {highscores.map((hs, index) => (
                 <tr key={index}>
                   <td>{index + 1}</td>
-                  <td>{hs.score} p</td>
-                  <td>{hs.time}</td>
+                  <td>{hs.quizScore} p</td>
+                  <td>{hs.time.toFixed(2)}</td>
                 </tr>
               ))}
             </tbody>

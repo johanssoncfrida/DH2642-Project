@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import QuizView from "../views/quizView";
+import LoadingView from "../views/loadingView";
 import { nextQuestion } from "../store/actions/quizActions";
 import { updateScore } from "../store/actions/quizActions";
 import { totalTime } from "../store/actions/quizActions";
@@ -265,23 +266,7 @@ class Quiz extends Component {
           />
         );
       } else {
-        return (
-          <div className="center">
-            <div className="preloader-wrapper big active">
-              <div className="spinner-layer spinner-red-only">
-                <div className="circle-clipper left">
-                  <div className="circle"></div>
-                </div>
-                <div className="gap-patch">
-                  <div className="circle"></div>
-                </div>
-                <div className="circle-clipper right">
-                  <div className="circle"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        );
+        return <LoadingView />;
       }
     } else {
       return <Redirect to="/afterQuiz" />;

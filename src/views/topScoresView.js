@@ -19,7 +19,7 @@ const TopScoresView = ({ items }) => {
                 <td>{index + 1}</td>
                 <td>{hs.username}</td>
                 <td>{hs.quizScore} p</td>
-                <td>{hs.time} s</td>
+                <td>{hs.time.toFixed(2)} s</td>
               </tr>
             ))}
           </tbody>

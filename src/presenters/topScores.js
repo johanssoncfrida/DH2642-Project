@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import TopScoresView from "../views/topScoresView";
+import LoadingView from "../views/loadingView";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { firestoreConnect } from "react-redux-firebase";
@@ -21,7 +22,7 @@ class TopScores extends Component {
       return TopScoresView({ items });
     }
 
-    return <div>No highscores</div>;
+    return <LoadingView />;
   }
 }
 

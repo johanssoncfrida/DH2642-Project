@@ -40,7 +40,6 @@ export const signUp = (newUser) => {
           username: newUser.username,
           favoriteActor: newUser.favoriteActor,
           gender: newUser.gender,
-          initial: newUser.username[0],
         });
       })
       .then(() => {

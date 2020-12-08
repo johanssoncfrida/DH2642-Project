@@ -21,7 +21,7 @@ const HighScoreView = ({ items }) => {
                     {index + 1}. {hs.username}
                   </td>
                   <td>{hs.quizScore} p</td>
-                  <td>{hs.time} s</td>
+                  <td>{hs.time.toFixed(2)} s</td>
                 </tr>
               ))}
             </tbody>

@@ -18,9 +18,7 @@ const SignedInLinks = (props) => {
       </li>
       <li>
         <NavLink to="/profile" className="btn btn-floating red darken-4">
-          {" "}
-          {/*#832023, 551317*/}
-          {props.profile.initial}
+          <i className="material-icons">person</i>
         </NavLink>
       </li>
     </ul>
