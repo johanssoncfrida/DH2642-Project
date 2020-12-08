@@ -1,30 +1,5 @@
 const initState = {
-  questions: [
-    {
-      questionText: "What year is it today?",
-      answerOptions: [
-        { answerText: "2020", isCorrect: true },
-        { answerText: "2019", isCorrect: false },
-        { answerText: "2000", isCorrect: false },
-      ],
-    },
-    {
-      questionText: "What is 1+1?",
-      answerOptions: [
-        { answerText: "3", isCorrect: false },
-        { answerText: "2", isCorrect: true },
-        { answerText: "4", isCorrect: false },
-      ],
-    },
-    {
-      questionText: "Question?",
-      answerOptions: [
-        { answerText: "False", isCorrect: false },
-        { answerText: "True", isCorrect: true },
-        { answerText: "Falsy", isCorrect: false },
-      ],
-    },
-  ],
+  questions: [],
   currentQuestionNr: 0,
   currentScore: 0,
   startTime: 0,
@@ -50,6 +25,12 @@ const quizReducer = (state = initState, action) => {
       return {
         ...state,
         currentQuestionNr: action.newNr,
+      };
+    case "SAVE_QUESTIONS":
+      console.log('save questions', action.questions);
+      return {
+        ...state,
+        questions: action.questions,
       };
     case "UPDATE_SCORE":
       //console.log('update score', action.newScore);

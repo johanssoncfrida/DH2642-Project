@@ -11,7 +11,7 @@ const BeforeQuizView = ({ setModal, handleStart }) => {
       <div className="row center">
         <NavLink
           to="/quiz"
-          className="btn btn-large orange hoverable pulse"
+          className="btn btn-large orange hoverable buttonPulse"
           onClick={() => handleStart()}
         >
           Start Quiz!

@@ -38,6 +38,12 @@ export const resetQuestion = () => {
   };
 };
 
+export const saveQuestions = (questions) => {
+  return (dispatch, getState) => {
+    dispatch({ type: "SAVE_QUESTIONS", questions: questions });
+  };
+};
+
 export const updateScore = (score) => {
   score = score + 1;
   return (dispatch, getState) => {

@@ -6,6 +6,7 @@ import { nextQuestion } from "../store/actions/quizActions";
 import { updateScore } from "../store/actions/quizActions";
 import { totalTime } from "../store/actions/quizActions";
 import { saveScore } from "../store/actions/quizActions";
+import { saveQuestions } from "../store/actions/quizActions";
 
 class Quiz extends Component {
   state = {
@@ -217,6 +218,7 @@ class Quiz extends Component {
         })
       ),
     }));
+    this.props.saveQuestions(this.state.questions);
   }
 
   shuffleArray(array) {
@@ -302,6 +304,7 @@ const mapDispatchToProps = (dispatch) => {
     updateScore: (score) => dispatch(updateScore(score)),
     totalTime: (time) => dispatch(totalTime(time)),
     saveScore: (totalTime) => dispatch(saveScore(totalTime)),
+    saveQuestions: (questions) => dispatch(saveQuestions(questions)),
   };
 };
 
