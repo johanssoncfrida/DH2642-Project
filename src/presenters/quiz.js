@@ -82,35 +82,13 @@ class Quiz extends Component {
             },
             {
               questionText:
-                "What movie has rank " + this.state.topListData[2].rank + "?",
-              questionAnswer: "" + this.state.topListData[2].title,
-              answerOptions: [
-                {
-                  answerText: "" + this.state.topListData[2].title,
-                  isCorrect: true,
-                  id: 1,
-                },
-                {
-                  answerText: "" + this.state.topListData[210].title,
-                  isCorrect: false,
-                  id: 2,
-                },
-                {
-                  answerText: "" + this.state.topListData[211].title,
-                  isCorrect: false,
-                  id: 3,
-                },
-              ],
-            },
-            {
-              questionText:
                 "Who is a main actor in " +
-                this.state.topListData[3].title +
+                this.state.topListData[2].title +
                 "?",
-              questionAnswer: "" + this.state.topListData[3].crew.split(",")[1],
+              questionAnswer: "" + this.state.topListData[2].crew.split(",")[1],
               answerOptions: [
                 {
-                  answerText: "" + this.state.topListData[3].crew.split(",")[1],
+                  answerText: "" + this.state.topListData[2].crew.split(",")[1],
                   isCorrect: true,
                   id: 1,
                 },
@@ -130,12 +108,99 @@ class Quiz extends Component {
             },
           ],
         },
-        this.shuffleQuestions
+        this.fetchPlotQuestion
       );
     }
   }
 
+  fetchPlotQuestion() {
+    fetch(
+      "http://imdb-api.com/en/API/Title/k_s58nmnri/" +
+        this.state.topListData[3].id
+    )
+      .then((response) => response.json())
+      .then((data) => this.setPlotQuestion(data))
+      .catch((err) => console.log(err));
+  }
+
+  setPlotQuestion(data) {
+    this.setState(
+      (prevState) => ({
+        questions: [
+          ...prevState.questions,
+          {
+            questionText: "What movie has this plot?",
+            extra: "" + data.plot,
+            questionAnswer: "" + data.title,
+            answerOptions: [
+              {
+                answerText: "" + data.title,
+                isCorrect: true,
+                id: 1,
+              },
+              {
+                answerText: "" + this.state.topListData[190].title,
+                isCorrect: false,
+                id: 2,
+              },
+              {
+                answerText: "" + this.state.topListData[191].title,
+                isCorrect: false,
+                id: 3,
+              },
+            ],
+          },
+        ],
+      }),
+      this.fetchTaglineQuestion
+    );
+  }
+
+  fetchTaglineQuestion() {
+    fetch(
+      "http://imdb-api.com/en/API/Title/k_s58nmnri/" +
+        this.state.topListData[4].id
+    )
+      .then((response) => response.json())
+      .then((data) => this.setTaglineQuestion(data))
+      .catch((err) => console.log(err));
+  }
+
+  setTaglineQuestion(data) {
+    this.setState(
+      (prevState) => ({
+        questions: [
+          ...prevState.questions,
+          {
+            questionText: "What movie has this tagline?",
+            extra: "" + data.tagline,
+            questionAnswer: "" + data.title,
+            answerOptions: [
+              {
+                answerText: "" + data.title,
+                isCorrect: true,
+                id: 1,
+              },
+              {
+                answerText: "" + this.state.topListData[180].title,
+                isCorrect: false,
+                id: 2,
+              },
+              {
+                answerText: "" + this.state.topListData[181].title,
+                isCorrect: false,
+                id: 3,
+              },
+            ],
+          },
+        ],
+      }),
+      this.shuffleQuestions
+    );
+  }
+
   shuffleQuestions() {
+    console.log(this.state);
     this.setState(
       { questions: this.shuffleArray(this.state.questions) },
       this.shuffleAnswerOptions
@@ -171,7 +236,7 @@ class Quiz extends Component {
       this.props.updateScore(this.props.score);
     }
 
-    if (this.props.questionNr === 3) {
+    if (this.props.questionNr === 4) {
       const totalTime = (Date.now() - this.props.startTime) / 1000;
 
       this.props.saveScore(totalTime);
@@ -188,8 +253,8 @@ class Quiz extends Component {
       return <Redirect to="/" />;
     }
 
-    if (questionNr < 4) {
-      if (this.state.topListData.length && this.state.questions[0]) {
+    if (questionNr < 5) {
+      if (this.state.topListData.length && this.state.questions[4]) {
         return (
           <QuizView
             question={this.state.questions[questionNr]}

@@ -17,7 +17,6 @@ class TopScores extends Component {
     if (userScores) {
       let temp = userScores.slice(0);
       temp.sort((a, b) => b.quizScore - a.quizScore || a.time - b.time);
-      console.log(userScores);
       items = temp.slice(0, 20);
       return TopScoresView({ items });
     }

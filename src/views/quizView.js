@@ -9,6 +9,7 @@ const QuizView = ({ question, questionNr, handleClick }) => {
       <h2 className="header center orange-text">
         {question && question.questionText}
       </h2>
+      <h6 className="center white-text">{question.extra && question.extra}</h6>
       <br />
       <br />
       {question &&
