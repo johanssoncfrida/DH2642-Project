@@ -35,12 +35,15 @@ class SignUp extends Component {
       <div className="container">
         <form onSubmit={this.handleSubmit} className="white">
           <h5 className="grey-text text-darken-3">Sign Up</h5>
+          <p className="grey-text text-darken-2">Please do not use your real email address or password.</p>
+
           <div className="input-field">
             <input
               placeholder="Email"
               type="email"
               id="email"
               onChange={this.handleChange}
+              required
             />
           </div>
           <div className="input-field">
@@ -49,6 +52,7 @@ class SignUp extends Component {
               type="password"
               id="password"
               onChange={this.handleChange}
+              required
             />
           </div>
           <div className="input-field">
@@ -57,6 +61,7 @@ class SignUp extends Component {
               type="text"
               id="username"
               onChange={this.handleChange}
+              required
             />
           </div>
 
@@ -64,10 +69,10 @@ class SignUp extends Component {
             <select
               className="browser-default"
               id="favoriteActor"
-              defaultValue="default"
               onChange={this.handleChange}
+              required
             >
-              <option value="default" disabled>
+              <option value="">
                 Favorite Actor
               </option>
               <option value="Leonardo DiCaprio">Leonardo Dicaprio</option>
@@ -75,6 +80,7 @@ class SignUp extends Component {
               <option value="Other">Other</option>
             </select>
           </div>
+
 
           <div action="#" className="radio" onChange={this.handleChangeRadio}>
             <p>
@@ -84,6 +90,7 @@ class SignUp extends Component {
                   name="gender"
                   type="radio"
                   value="male"
+                  required
                 />
                 <span>Male</span>
               </label>
@@ -107,6 +114,9 @@ class SignUp extends Component {
               </label>
             </p>
           </div>
+
+          <p className="grey-text text-darken-2">All fields are required.</p>
+
 
           <div className="input-field">
             <button className="btn red darken-4 z-depth-0">Sign up</button>

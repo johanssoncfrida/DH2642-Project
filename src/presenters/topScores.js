@@ -1,12 +1,17 @@
 import React, { Component } from "react";
 import TopScoresView from "../views/topScoresView";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 
 class TopScores extends Component {
   render() {
-    const { userScores } = this.props;
+    const { auth, userScores } = this.props;
+
+    if (!auth.uid) {
+      return <Redirect to="/" />;
+    }
 
     let items;
     if (userScores) {
@@ -22,8 +27,8 @@ class TopScores extends Component {
 }
 
 const mapStateToProps = (state) => {
-  //console.log(state);
   return {
+    auth: state.firebase.auth,
     userScores: state.firestore.ordered.userScores,
   };
 };

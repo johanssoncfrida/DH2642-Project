@@ -28,10 +28,10 @@ const BeforeQuizView = ({ setModal, handleStart }) => {
           id="modal1"
           className="modal "
         >
-          <div className="modal-content" id="informationcard">
-            <h2>Instructions</h2>
+          <div className="modal-content">
+            <h2 className="orange-text">Instructions</h2>
 
-            <div className="card-content">
+            
               <p>
                 Welcome to our moviequiz site! On this site you can test your
                 knowledge about the 250 top rated movies according to IMDB. Tell
@@ -48,14 +48,15 @@ const BeforeQuizView = ({ setModal, handleStart }) => {
                 name will show on the highscoreboard! So what are you waiting
                 for? Lets get that score!
               </p>
-            </div>
-
-            <a
+           <div className="modal-footer">
+           <a
               href="#!"
-              className="modal-close waves-effect waves-green btn-flat white-text"
+              className="modal-close waves-effect waves-green orange btn-flat white-text"
             >
               Close
             </a>
+           </div>
+
           </div>
         </div>
       </div>
