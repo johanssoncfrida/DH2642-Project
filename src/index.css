@@ -93,41 +93,36 @@ code {
 #afterquizView {
   margin-top: 100px;
   width: 1000px;
-  /*background: url("./img/stolar.jpg") no-repeat;*/
-
+  background: rgba(0, 0, 0, 0.7);
   background-size: 100% 100%;
-  border: groove;
-  border-color: #2a0004;
 }
 #textAfterquiz {
+  width: 100%;
   margin-top: 80px;
   text-align: left;
-  /*font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;*/
-  /* background: url("./img/stolar.jpg") no-repeat; */
-  /* background-image: linear-gradient(#c70223, #2a0004); */
-  background-size: 100% 100%;
-
   padding: 0px 0px 0px 15px;
   box-shadow: 0 0 15px 10px #050505;
 }
 #afterQuiz {
+  width: 100%;
+
   margin-left: 10px;
   margin-top: -30px;
-  /* color: #cb8936; */
   color: white;
 }
-#textInAfterquiz {
-  font-size: 20px;
-  font-weight: bold;
-  color: white;
+#highscore {
+  float: right;
 }
+#headerAfterquiz {
+  color: #ff9800;
+}
+
 #buttonAfterquiz {
   float: right;
   margin-right: 25px;
   box-shadow: 0 0 15px 10px #141414;
   background-color: #ff9800;
-  animation: pulse 1s infinite;
-  opacity: 1;
+  animation: pulse 2s infinite;
 }
 @keyframes pulse {
   0% {
@@ -144,16 +139,6 @@ code {
     transform: scale(0.95);
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
   }
-}
-
-#informationcard {
-  background: url("./img/information1.jpg") no-repeat;
-  background-size: 100%;
-  background-position: center;
-  min-height: 100%;
-  text-align: left;
-  color: white;
-  font-size: 18px;
 }
 
 #modal1 {
