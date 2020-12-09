@@ -1,8 +1,14 @@
+import { NavLink } from "react-router-dom";
+
 const TopScoresView = ({ items }) => {
   return (
     <div className="topscores col">
       <div className="card-panel">
-        {/*<h4 className="center"><img src={image} alt=""></img></h4>*/}
+      <div className="card-action right-align">
+        <NavLink to="/beforequiz" className="btn-small orange">
+          X
+        </NavLink>
+      </div>
         <h2 className="center orange-text">Highscores</h2>
         <table>
           <thead>

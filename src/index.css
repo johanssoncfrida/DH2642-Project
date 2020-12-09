@@ -101,7 +101,6 @@ code {
   margin-top: 80px;
   text-align: left;
   padding: 0px 0px 0px 15px;
-  box-shadow: 0 0 15px 10px #050505;
 }
 #afterQuiz {
   width: 100%;
@@ -120,7 +119,6 @@ code {
 .buttonAfterQuiz {
   float: right;
   margin-right: 60px;
-  box-shadow: 0 0 15px 10px #141414;
 }
 
 .buttonPulse {

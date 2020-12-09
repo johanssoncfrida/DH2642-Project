@@ -1,11 +1,10 @@
 import { NavLink } from "react-router-dom";
+import image from "../img/MQ-welcome.png";
 
 const BeforeQuizView = ({ setModal, handleStart }) => {
   return (
     <div>
-      <br />
-      <br />
-      <h1 className="header center orange-text">Welcome!</h1>
+      <h1 className="header center orange-text"><img src={image} alt=""></img></h1>
       <br />
       <br />
       <div className="row center">

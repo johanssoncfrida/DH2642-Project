@@ -1,6 +1,13 @@
+import { NavLink } from "react-router-dom";
+
 const ProfilePageView = ({ profile, highscores, image }) => {
   return (
     <div className="card" id="profile">
+      <div className="card-action right-align">
+        <NavLink to="/beforequiz" className="btn-small orange">
+          X
+        </NavLink>
+      </div>
       <div className="card-content light">
         <div className="card grey lighten-4 horizontal">
           <div className="card-image">

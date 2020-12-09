@@ -26,7 +26,7 @@ class AfterQuiz extends Component {
   goodScore = [
     "Good job " + this.props.profile.username + "! Gollum says that you are his preeeecious!",
     "Amazing work " + this.props.profile.username + "! Meryl Streep thinks that you are fantastic!",
-    "Truly with you" + this.props.profile.username + "the force is! Proud of you Yoda is.",
+    "Truly with you " + this.props.profile.username + " the force is! Proud of you Yoda is.",
     "Marvelous " + this.props.profile.username + "! Bond. James Bond congratulates you.",
   ]
 
