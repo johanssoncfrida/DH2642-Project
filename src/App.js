@@ -22,8 +22,8 @@ class App extends Component {
             <Route path="/beforequiz">
               <div className="row">
                 <div className="col s4">
-                  <div className="highscore">
-                    <HighScore />
+                  <div className="topScores">
+                    <TopScores />
                   </div>
                 </div>
                 <div className="col s4">
@@ -36,13 +36,13 @@ class App extends Component {
             </Route>
             <Route path="/signin" component={SignIn} />
             <Route path="/signup" component={SignUp} />
-            <Route path="/topScores" component={TopScores} />
+            <Route path="/highscore" component={HighScore} />
 
             <Route path="/profile">
               <div className="row">
                 <div className="col s4 ">
-                  <div className="highscore ">
-                    <HighScore />
+                  <div className="topScores">
+                    <TopScores />
                   </div>
                 </div>
                 <div className="col s8">
@@ -58,8 +58,8 @@ class App extends Component {
                 <div className="col s7 ">
                   <AfterQuiz />
                 </div>
-                <div className="highscore col s4" id="highscore">
-                  <HighScore />
+                <div className="topScores col s4" id="topScores">
+                  <TopScores />
                 </div>
               </div>
             </Route>

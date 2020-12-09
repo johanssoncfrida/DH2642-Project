@@ -25,7 +25,7 @@ const ProfilePageView = ({ profile, highscores, image }) => {
         </div>
 
         <div className="card-content">
-          <h5>Your personal highscores:</h5>
+          <h5>Your top 3 personal highscores:</h5>
           <table>
             <thead>
               <tr>

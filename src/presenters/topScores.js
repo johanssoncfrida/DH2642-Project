@@ -1,34 +1,43 @@
 import React, { Component } from "react";
 import TopScoresView from "../views/topScoresView";
-import LoadingView from "../views/loadingView";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 
 class TopScores extends Component {
   render() {
-    const { auth, userScores } = this.props;
-
-    if (!auth.uid) {
-      return <Redirect to="/" />;
-    }
+    const { userScores } = this.props;
 
     let items;
     if (userScores) {
       let temp = userScores.slice(0);
       temp.sort((a, b) => b.quizScore - a.quizScore || a.time - b.time);
-      items = temp.slice(0, 20);
+      items = temp.slice(0, 5);
       return TopScoresView({ items });
     }
 
-    return <LoadingView />;
+    return (
+      <div className="center">
+        <div className="preloader-wrapper active">
+          <div className="spinner-layer spinner-red-only">
+            <div className="circle-clipper left">
+              <div className="circle"></div>
+            </div>
+            <div className="gap-patch">
+              <div className="circle"></div>
+            </div>
+            <div className="circle-clipper right">
+              <div className="circle"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    auth: state.firebase.auth,
     userScores: state.firestore.ordered.userScores,
   };
 };

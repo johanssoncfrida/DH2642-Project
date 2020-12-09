@@ -202,7 +202,7 @@ class Quiz extends Component {
   }
 
   shuffleQuestions() {
-    console.log(this.state);
+    //console.log(this.state);
     this.setState(
       { questions: this.shuffleArray(this.state.questions) },
       this.shuffleAnswerOptions

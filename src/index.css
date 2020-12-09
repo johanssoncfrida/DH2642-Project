@@ -69,7 +69,7 @@ code {
   height: 240px;
 }
 
-.highscore {
+.topScores {
   margin-left: 180px;
 }
 
@@ -109,7 +109,7 @@ code {
   margin-top: -30px;
   color: white;
 }
-#highscore {
+#topScores {
   float: right;
 }
 #headerAfterquiz {
@@ -146,21 +146,21 @@ code {
 }
 
 /*TopScoresView*/
-.topscores tbody {
+.highscore tbody {
   display: block;
   height: 400px;
   overflow: auto;
 }
-.topscores thead,
-.topscores tbody tr {
+.highscore thead,
+.highscore tbody tr {
   display: table;
   width: 100%;
   table-layout: fixed;
 }
-.topscores thead {
+.highscore thead {
   width: calc(100% - 1em);
 }
-.topscores table {
+.highscore table {
   width: 100%;
 }
 .card-panel {
@@ -173,7 +173,7 @@ code {
   color: white;
 }
 
-.topscores #data:hover {
+.highscore #data:hover {
   background: rgba(128, 0, 0, 0.7);
 }
 

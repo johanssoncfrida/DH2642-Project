@@ -27,7 +27,7 @@ const quizReducer = (state = initState, action) => {
         currentQuestionNr: action.newNr,
       };
     case "SAVE_QUESTIONS":
-      console.log('save questions', action.questions);
+      //console.log('save questions', action.questions);
       return {
         ...state,
         questions: action.questions,

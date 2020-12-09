@@ -8,7 +8,7 @@ const HomePageView = () => {
       <br />
       <h1 className="header center"><img src={image} alt=""></img></h1>
 
-      <h5 className="center white-text">How much do you know about Movies? Try your skills in this free quiz!</h5>
+      <h5 className="center white-text">How much do you know about movies? Try your skills in this free quiz!</h5>
       <br />
       <br />
       

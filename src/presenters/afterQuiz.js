@@ -48,7 +48,7 @@ class AfterQuiz extends Component {
     }
 
     let quizMessage = "";
-    if (this.props.score > 2) {
+    if (this.props.score > 3) {
       quizMessage = this.goodScore[Math.floor(Math.random() * this.goodScore.length)]
     }
     else {
