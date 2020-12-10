@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-const ProfilePageView = ({ profile, highscores, image }) => {
+const ProfilePageView = ({ profile, highscorelist, image }) => {
   return (
     <div className="card" id="profile">
       <div className="card-action right-align">
@@ -25,21 +25,21 @@ const ProfilePageView = ({ profile, highscores, image }) => {
         </div>
 
         <div className="card-content">
-          <h5>Your top 3 personal highscores:</h5>
+          <h5>Your recent highscores:</h5>
           <table>
             <thead>
               <tr>
-                <th>Ranking</th>
+                <th>Quizzed at</th>
                 <th>Score</th>
                 <th>Time</th>
               </tr>
             </thead>
             <tbody>
-              {highscores.map((hs, index) => (
+              {highscorelist.slice(0, 3).map((scores, index) => (
                 <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>{hs.quizScore} p</td>
-                  <td>{hs.time.toFixed(2)}</td>
+                  <td>{scores.createdAt}</td>
+                  <td>{scores.highscore}</td>
+                  <td>{scores.time}</td>
                 </tr>
               ))}
             </tbody>

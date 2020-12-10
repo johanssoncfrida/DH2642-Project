@@ -73,8 +73,8 @@ const AfterQuizView = ({
                 </tr>
               </thead>
               <tbody>
-                {questions.map((quest) => (
-                  <tr key={quest.questionText}>
+                {questions.map((quest, index) => (
+                  <tr key={index}>
                     <td>{quest.questionText}</td>
                     <td>{quest.questionAnswer}</td>
                   </tr>

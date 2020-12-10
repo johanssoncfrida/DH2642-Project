@@ -8,6 +8,8 @@ import { updateScore } from "../store/actions/quizActions";
 import { totalTime } from "../store/actions/quizActions";
 import { saveScore } from "../store/actions/quizActions";
 import { saveQuestions } from "../store/actions/quizActions";
+import { updateHighscoreFirebase } from "../services/firebase";
+import { startTime } from "../store/actions/quizActions";
 
 class Quiz extends Component {
   state = {
@@ -202,7 +204,6 @@ class Quiz extends Component {
   }
 
   shuffleQuestions() {
-    //console.log(this.state);
     this.setState(
       { questions: this.shuffleArray(this.state.questions) },
       this.shuffleAnswerOptions
@@ -220,6 +221,7 @@ class Quiz extends Component {
       ),
     }));
     this.props.saveQuestions(this.state.questions);
+    this.props.saveStartTime(Date.now());
   }
 
   shuffleArray(array) {
@@ -241,9 +243,12 @@ class Quiz extends Component {
 
     if (this.props.questionNr === 4) {
       const totalTime = (Date.now() - this.props.startTime) / 1000;
-
+      console.log(this.props.startTime);
       this.props.saveScore(totalTime);
       this.props.totalTime(totalTime);
+
+      const { score, userid } = this.props;
+      updateHighscoreFirebase(score, userid, totalTime);
     }
     this.props.nextQuestion(this.props.questionNr);
   };
@@ -280,6 +285,7 @@ const mapStateToProps = (state) => {
     questionNr: state.quiz.currentQuestionNr,
     score: state.quiz.currentScore,
     startTime: state.quiz.startTime,
+    userid: state.firebase.auth.uid,
   };
 };
 
@@ -290,6 +296,7 @@ const mapDispatchToProps = (dispatch) => {
     totalTime: (time) => dispatch(totalTime(time)),
     saveScore: (totalTime) => dispatch(saveScore(totalTime)),
     saveQuestions: (questions) => dispatch(saveQuestions(questions)),
+    saveStartTime: (time) => dispatch(startTime(time)),
   };
 };
 

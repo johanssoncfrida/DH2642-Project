@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { resetQuestion } from "../store/actions/quizActions";
 import { resetScore } from "../store/actions/quizActions";
-import { startTime } from "../store/actions/quizActions";
 import M from "materialize-css";
 
 class AfterQuiz extends Component {
@@ -16,7 +15,6 @@ class AfterQuiz extends Component {
   handleStart = () => {
     this.props.resetQuestion();
     this.props.resetScore();
-    this.props.startTime(Date.now());
   };
 
   setModal = (m) => {
@@ -68,6 +66,9 @@ class AfterQuiz extends Component {
         Math.floor(Math.random() * this.badScore.length)
       ];
     }
+    if (totalTime === 0) {
+      quizMessage = "You have to do the quiz silly!";
+    }
 
     return AfterQuizView({
       score: score,
@@ -94,7 +95,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     resetQuestion: () => dispatch(resetQuestion()),
     resetScore: () => dispatch(resetScore()),
-    startTime: (time) => dispatch(startTime(time)),
   };
 };
 

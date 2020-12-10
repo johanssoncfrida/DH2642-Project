@@ -3,6 +3,7 @@ import TopScoresView from "../views/topScoresView";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
+import LoadingView from "../views/loadingView";
 
 class TopScores extends Component {
   render() {
@@ -16,23 +17,7 @@ class TopScores extends Component {
       return TopScoresView({ items });
     }
 
-    return (
-      <div className="center">
-        <div className="preloader-wrapper active">
-          <div className="spinner-layer spinner-red-only">
-            <div className="circle-clipper left">
-              <div className="circle"></div>
-            </div>
-            <div className="gap-patch">
-              <div className="circle"></div>
-            </div>
-            <div className="circle-clipper right">
-              <div className="circle"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
+    return <LoadingView />;
   }
 }
 
