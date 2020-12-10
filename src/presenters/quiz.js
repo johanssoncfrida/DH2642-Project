@@ -18,7 +18,7 @@ class Quiz extends Component {
   };
 
   componentDidMount() {
-    fetch("http://imdb-api.com/API/Top250Movies/k_s58nmnri")
+    fetch("https://imdb-api.com/API/Top250Movies/k_s58nmnri")
       .then((response) => response.json())
       .then((data) => this.shuffleAndSet(data.items))
       .catch((err) => console.log(err));
@@ -47,12 +47,22 @@ class Quiz extends Component {
                   id: 1,
                 },
                 {
-                  answerText: "" + this.state.topListData[230].year,
+                  answerText:
+                    "" +
+                    this.checkYearDuplicates({
+                      correctAnswer: this.state.topListData[0].year,
+                      array: this.state.topListData,
+                    }),
                   isCorrect: false,
                   id: 2,
                 },
                 {
-                  answerText: "" + this.state.topListData[231].year,
+                  answerText:
+                    "" +
+                    this.checkAllYearDuplicates({
+                      correctAnswer: this.state.topListData[0].year,
+                      array: this.state.topListData,
+                    }),
                   isCorrect: false,
                   id: 3,
                 },
@@ -72,13 +82,25 @@ class Quiz extends Component {
                 },
                 {
                   answerText:
-                    "" + this.state.topListData[220].crew.split(",")[0],
+                    "" +
+                    this.checkDirDuplicates({
+                      correctAnswer: this.state.topListData[1].crew.split(
+                        ","
+                      )[0],
+                      array: this.state.topListData,
+                    }),
                   isCorrect: false,
                   id: 2,
                 },
                 {
                   answerText:
-                    "" + this.state.topListData[221].crew.split(",")[0],
+                    "" +
+                    this.checkAllDirDuplicates({
+                      correctAnswer: this.state.topListData[1].crew.split(
+                        ","
+                      )[0],
+                      array: this.state.topListData,
+                    }),
                   isCorrect: false,
                   id: 3,
                 },
@@ -98,13 +120,25 @@ class Quiz extends Component {
                 },
                 {
                   answerText:
-                    "" + this.state.topListData[200].crew.split(",")[1],
+                    "" +
+                    this.checkActDuplicates({
+                      correctAnswer: this.state.topListData[2].crew.split(
+                        ","
+                      )[1],
+                      array: this.state.topListData,
+                    }),
                   isCorrect: false,
                   id: 2,
                 },
                 {
                   answerText:
-                    "" + this.state.topListData[201].crew.split(",")[1],
+                    "" +
+                    this.checkAllActDuplicates({
+                      correctAnswer: this.state.topListData[2].crew.split(
+                        ","
+                      )[1],
+                      array: this.state.topListData,
+                    }),
                   isCorrect: false,
                   id: 3,
                 },
@@ -117,9 +151,75 @@ class Quiz extends Component {
     }
   }
 
+  #idxFirstWrongYearOpt = 240;
+  checkYearDuplicates({ correctAnswer, array }) {
+    let firstWrongOpt = array[this.#idxFirstWrongYearOpt].year;
+
+    while (firstWrongOpt === correctAnswer) {
+      this.#idxFirstWrongYearOpt = this.#idxFirstWrongYearOpt - 1;
+      firstWrongOpt = array[this.#idxFirstWrongYearOpt].year;
+    }
+    return firstWrongOpt;
+  }
+
+  checkAllYearDuplicates({ correctAnswer, array }) {
+    let firstWrongOpt = array[this.#idxFirstWrongYearOpt].year;
+    let scndWrongOpt = array[this.#idxFirstWrongYearOpt].year;
+
+    while (scndWrongOpt === correctAnswer || scndWrongOpt === firstWrongOpt) {
+      this.#idxFirstWrongYearOpt = this.#idxFirstWrongYearOpt - 1;
+      scndWrongOpt = array[this.#idxFirstWrongYearOpt].year;
+    }
+    return scndWrongOpt;
+  }
+
+  #idxFirstWrongDirOpt = 230;
+  checkDirDuplicates({ correctAnswer, array }) {
+    let firstWrongOpt = array[this.#idxFirstWrongDirOpt].crew.split(",")[0];
+
+    while (firstWrongOpt === correctAnswer) {
+      this.#idxFirstWrongDirOpt = this.#idxFirstWrongDirOpt - 1;
+      firstWrongOpt = array[this.#idxFirstWrongDirOpt].crew.split(",")[0];
+    }
+    return firstWrongOpt;
+  }
+
+  checkAllDirDuplicates({ correctAnswer, array }) {
+    let firstWrongOpt = array[this.#idxFirstWrongDirOpt].crew.split(",")[0];
+    let scndWrongOpt = array[this.#idxFirstWrongDirOpt].crew.split(",")[0];
+
+    while (scndWrongOpt === correctAnswer || scndWrongOpt === firstWrongOpt) {
+      this.#idxFirstWrongDirOpt = this.#idxFirstWrongDirOpt - 1;
+      scndWrongOpt = array[this.#idxFirstWrongDirOpt].crew.split(",")[0];
+    }
+    return scndWrongOpt;
+  }
+
+  #idxFirstWrongActOpt = 220;
+  checkActDuplicates({ correctAnswer, array }) {
+    let firstWrongOpt = array[this.#idxFirstWrongActOpt].crew.split(",")[1];
+
+    while (firstWrongOpt === correctAnswer) {
+      this.#idxFirstWrongActOpt = this.#idxFirstWrongActOpt - 1;
+      firstWrongOpt = array[this.#idxFirstWrongActOpt].crew.split(",")[1];
+    }
+    return firstWrongOpt;
+  }
+
+  checkAllActDuplicates({ correctAnswer, array }) {
+    let firstWrongOpt = array[this.#idxFirstWrongActOpt].crew.split(",")[1];
+    let scndWrongOpt = array[this.#idxFirstWrongActOpt].crew.split(",")[1];
+
+    while (scndWrongOpt === correctAnswer || scndWrongOpt === firstWrongOpt) {
+      this.#idxFirstWrongActOpt = this.#idxFirstWrongActOpt - 1;
+      scndWrongOpt = array[this.#idxFirstWrongActOpt].crew.split(",")[1];
+    }
+    return scndWrongOpt;
+  }
+
   fetchPlotQuestion() {
     fetch(
-      "http://imdb-api.com/en/API/Title/k_s58nmnri/" +
+      "https://imdb-api.com/en/API/Title/k_s58nmnri/" +
         this.state.topListData[3].id
     )
       .then((response) => response.json())
@@ -164,17 +264,17 @@ class Quiz extends Component {
 
   fetchTaglineQuestion() {
     fetch(
-      "http://imdb-api.com/en/API/Title/k_s58nmnri/" +
+      "https://imdb-api.com/en/API/Title/k_s58nmnri/" +
         this.state.topListData[this.#index++].id
     )
       .then((response) => response.json())
       .then((data) => {
         if (data.tagline === "") {
-          this.fetchTaglineQuestion()}
-          else {
-            this.setTaglineQuestion(data)
-          }
-        })
+          this.fetchTaglineQuestion();
+        } else {
+          this.setTaglineQuestion(data);
+        }
+      })
       .catch((err) => console.log(err));
   }
 
