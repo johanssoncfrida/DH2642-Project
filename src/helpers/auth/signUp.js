@@ -35,7 +35,9 @@ class SignUp extends Component {
       <div className="container">
         <form onSubmit={this.handleSubmit} className="white">
           <h5 className="grey-text text-darken-3">Sign Up</h5>
-          <p className="grey-text text-darken-2">Please do not use your real email address or password.</p>
+          <p className="grey-text text-darken-2">
+            Please do not use your real email address or password.
+          </p>
 
           <div className="input-field">
             <input
@@ -72,15 +74,15 @@ class SignUp extends Component {
               onChange={this.handleChange}
               required
             >
-              <option value="">
-                Favorite Actor
-              </option>
+              <option value="">Favorite Actor</option>
               <option value="Leonardo DiCaprio">Leonardo Dicaprio</option>
+              <option value="Meryl Streep">Meryl Streep</option>
+              <option value="Ian McKellen">Ian McKellen</option>
+              <option value="Morgan Freeman">Morgan Freeman</option>
               <option value="Kate Winslet">Kate Winslet</option>
               <option value="Other">Other</option>
             </select>
           </div>
-
 
           <div action="#" className="radio" onChange={this.handleChangeRadio}>
             <p>
@@ -116,7 +118,6 @@ class SignUp extends Component {
           </div>
 
           <p className="grey-text text-darken-2">All fields are required.</p>
-
 
           <div className="input-field">
             <button className="btn red darken-4 z-depth-0">Sign up</button>
