@@ -40,7 +40,7 @@ class AfterQuiz extends Component {
     "Oh no " +
       this.props.profile.username +
       "... Dory says just keep swimming!",
-    "Houston we a problem... " +
+    "Houston we have a problem... " +
       this.props.profile.username +
       " did not do great.",
     "Hasta La Vista, " + this.props.profile.username + "! Please do better!",

@@ -160,13 +160,21 @@ class Quiz extends Component {
     );
   }
 
+  #index = 4;
+
   fetchTaglineQuestion() {
     fetch(
       "http://imdb-api.com/en/API/Title/k_s58nmnri/" +
-        this.state.topListData[4].id
+        this.state.topListData[this.#index++].id
     )
       .then((response) => response.json())
-      .then((data) => this.setTaglineQuestion(data))
+      .then((data) => {
+        if (data.tagline === "") {
+          this.fetchTaglineQuestion()}
+          else {
+            this.setTaglineQuestion(data)
+          }
+        })
       .catch((err) => console.log(err));
   }
 
@@ -223,11 +231,11 @@ class Quiz extends Component {
   }
 
   shuffleArray(array) {
-    for (var i = array.length - 1; i > 0; i--) {
+    for (let i = array.length - 1; i > 0; i--) {
       // Generate random number
-      var j = Math.floor(Math.random() * (i + 1));
+      let j = Math.floor(Math.random() * (i + 1));
 
-      var temp = array[i];
+      let temp = array[i];
       array[i] = array[j];
       array[j] = temp;
     }
