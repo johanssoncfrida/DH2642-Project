@@ -24,7 +24,7 @@ class ProfilePage extends Component {
       return <Redirect to="/" />;
     }
 
-    if (highscorelist && highscorelist.length) {
+    if (highscorelist) {
       highscorelist.sort(compare);
       return ProfilePageView({ profile, highscorelist, image });
     }
@@ -37,7 +37,6 @@ const mapStateToProps = (state) => {
   return {
     auth: state.firebase.auth,
     profile: state.firebase.profile,
-    userScores: state.firestore.ordered.userScores,
     highscorelist: state.firebase.profile.highscores,
   };
 };

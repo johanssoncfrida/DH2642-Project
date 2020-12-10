@@ -43,11 +43,13 @@ export const signUp = (newUser) => {
             username: newUser.username,
             favoriteActor: newUser.favoriteActor,
             gender: newUser.gender,
-            highscores: {
-              highscore: "",
-              time: "",
-              createdAt: "",
-            },
+            highscores: [
+              {
+                highscore: "",
+                time: "",
+                createdAt: "",
+              },
+            ],
           });
       })
       .then(() => {
