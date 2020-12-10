@@ -211,8 +211,6 @@ class Quiz extends Component {
   }
 
   shuffleAnswerOptions() {
-    console.log("In shuffle answer options");
-
     this.setState((state) => ({
       questions: state.questions.map((elem) =>
         Object.assign(elem, {
@@ -243,7 +241,6 @@ class Quiz extends Component {
 
     if (this.props.questionNr === 4) {
       const totalTime = (Date.now() - this.props.startTime) / 1000;
-      console.log(this.props.startTime);
       this.props.saveScore(totalTime);
       this.props.totalTime(totalTime);
 
