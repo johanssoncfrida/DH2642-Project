@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 const SignUpView = ({
   handleSubmit,
   handleChange,
@@ -7,8 +9,13 @@ const SignUpView = ({
   return (
     <div className="container">
       <form onSubmit={(e) => handleSubmit(e)} className="white">
+        <div className="card-action right-align">
+          <NavLink to="/" className="btn-small orange">
+            X
+          </NavLink>
+        </div>
         <h5 className="grey-text text-darken-3">Sign Up</h5>
-        <p className="grey-text text-darken-2">
+        <p className="red-text text-darken-2">
           Please do not use your real email address or password.
         </p>
 

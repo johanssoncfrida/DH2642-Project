@@ -18,7 +18,7 @@ const BeforeQuizView = ({ setModal, handleStart }) => {
         </NavLink>
       </div>
       <div className="row center">
-        <a className="btn orange modal-trigger" href="#modal1">
+        <a className="btn-large orange modal-trigger" href="#modal1">
           Instructions
         </a>
         <div
@@ -33,20 +33,20 @@ const BeforeQuizView = ({ setModal, handleStart }) => {
 
             <p>
               Welcome to our movie quiz site! On this site you can test your
-              knowledge about the 250 top rated movies according to IMDB. Tell
-              your friends and you can all have your individual free account and
-              see who gets the highest score!
+              knowledge about the 250 top rated movies according to the IMDB.
+              Tell your friends and you can all have your individual free
+              account and see who gets the highest score!
             </p>
             <p>
               This is a quiz taken on time. The timing starts when clicking the
               "Start Quiz"-button. The quiz have 5 questions and each question
               has 3 alternatives. Choose the alternative you believe is the
-              correct answer and continue to the next question. Every correct
-              answer gives you one point and the total score will be ordered by
-              points and the total time it took taking the quiz.
+              correct answer. Every correct answer gives you one point and the
+              total score will be ordered by points and the total time it took
+              taking the quiz.
             </p>
             <p>
-              When your are done answering all the question you will get your
+              When you're are done answering all the questions you will get your
               score! If you are amongst the top 5 your name will show on the Top
               5-board! So what are you waiting for? Lets get that score!
             </p>
