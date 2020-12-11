@@ -42,8 +42,7 @@ const getTime = () => {
   const date =
     today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
 
-  const time =
-    today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  const time = new Date().toTimeString().substr(0, 8);
 
   const dateTime = date + " " + time;
   return dateTime;

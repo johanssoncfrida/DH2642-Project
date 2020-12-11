@@ -8,7 +8,6 @@ import { updateScore } from "../store/actions/quizActions";
 import { totalTime } from "../store/actions/quizActions";
 import { saveScore } from "../store/actions/quizActions";
 import { saveQuestions } from "../store/actions/quizActions";
-import { updateHighscoreFirebase } from "../services/firebase";
 import { startTime } from "../store/actions/quizActions";
 import {
   checkYearDuplicates,
@@ -295,9 +294,6 @@ class Quiz extends Component {
       const totalTime = (Date.now() - this.props.startTime) / 1000;
       this.props.saveScore(totalTime);
       this.props.totalTime(totalTime);
-
-      const { score, userid } = this.props;
-      updateHighscoreFirebase(score, userid, totalTime);
     }
     this.props.nextQuestion(this.props.questionNr);
   };
@@ -346,7 +342,6 @@ const mapStateToProps = (state) => {
     questionNr: state.quiz.currentQuestionNr,
     score: state.quiz.currentScore,
     startTime: state.quiz.startTime,
-    userid: state.firebase.auth.uid,
   };
 };
 

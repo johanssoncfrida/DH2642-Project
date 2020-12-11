@@ -1,3 +1,5 @@
+import { updateHighscoreFirebase } from "../../services/firebase";
+
 export const saveScore = (totalTime) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     // make async call to db
@@ -5,6 +7,9 @@ export const saveScore = (totalTime) => {
     const state = getState();
     const username = state.firebase.profile.username;
     const userId = state.firebase.auth.uid;
+    const score = state.quiz.currentScore;
+
+    updateHighscoreFirebase(score, userId, totalTime);
 
     firestore
       .collection("userScores")
