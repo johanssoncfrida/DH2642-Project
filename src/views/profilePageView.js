@@ -25,7 +25,7 @@ const ProfilePageView = ({ profile, highscorelist, image }) => {
         </div>
 
         <div className="card-content">
-          <h5>Your recent highscores:</h5>
+          <h5>Your three most recent highscores:</h5>
           <table>
             <thead>
               <tr>
@@ -39,7 +39,7 @@ const ProfilePageView = ({ profile, highscorelist, image }) => {
                 <tr key={index}>
                   <td>{scores.createdAt}</td>
                   <td>{scores.highscore}</td>
-                  <td>{scores.time}</td>
+                  <td>{scores.time.toFixed(2)} s</td>
                 </tr>
               ))}
             </tbody>
