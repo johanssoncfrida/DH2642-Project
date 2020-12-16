@@ -26,6 +26,16 @@ const authReducer = (state = initState, action) => {
         ...state,
         authError: action.err.message,
       };
+    case "UPDATE_SUCCESS":
+      return {
+        ...state,
+        authError: null,
+      };
+    case "UPDATE_ERROR":
+      return {
+        ...state,
+        authError: "Update failed",
+      };
     default:
       return state;
   }

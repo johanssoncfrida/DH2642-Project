@@ -109,6 +109,7 @@ const SignUpView = ({
             {authError ? <p>{authError}</p> : null}
           </div>
         </div>
+        <div className="center">Already have an account? <NavLink to="/signin" className="red-text text-darken-2">Log in</NavLink></div>
       </form>
     </div>
   );

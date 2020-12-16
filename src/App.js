@@ -10,6 +10,7 @@ import AfterQuiz from "./presenters/afterQuiz";
 import ProfilePage from "./presenters/profilePage";
 import HighScore from "./presenters/highScore";
 import TopScores from "./presenters/topScores";
+import UpdateProfile  from "./presenters/updateProfile";
 
 class App extends Component {
   render() {
@@ -37,7 +38,7 @@ class App extends Component {
             <Route path="/signin" component={SignIn} />
             <Route path="/signup" component={SignUp} />
             <Route path="/highscore" component={HighScore} />
-
+          
             <Route path="/profile">
               <div className="row">
                 <div className="col s4 ">
@@ -52,6 +53,22 @@ class App extends Component {
                 </div>
               </div>
             </Route>
+
+            <Route path="/updateProfile">
+              <div className="row">
+                <div className="col s4 ">
+                <div className="topScores">
+                    <TopScores />
+                  </div>
+                </div>
+                <div className="col s8">
+                  <div className="profile">
+                    <UpdateProfile />
+                  </div>
+                </div>
+              </div>
+            </Route>
+
             <Route path="/quiz" component={Quiz} />
             <Route path="/afterquiz">
               <div className="row center" id="afterquizView">

@@ -60,3 +60,24 @@ export const signUp = (newUser) => {
       });
   };
 };
+
+export const updateUser = (user) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firebase = getFirebase();
+    const state = getState();
+    const userId = state.firebase.auth.uid;
+    var db = firebase.firestore();
+
+    db.collection("users").doc(userId).update({
+      username: user.username,
+      favoriteActor: user.favoriteActor,
+      gender: user.gender
+    })
+    .then(() => {
+      dispatch({ type: "UPDATE_SUCCESS" });
+    })
+    .catch((err) => {
+      dispatch({ type: "UPDATE_ERROR", err });
+    });
+  };
+}

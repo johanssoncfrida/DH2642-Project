@@ -23,6 +23,13 @@ const ProfilePageView = ({ profile, highscorelist, image }) => {
             <br />
           </div>
         </div>
+        <div className="card-action right-align">
+    <div className="input-field">
+        <NavLink to="/updateProfile" className="btn-small orange">
+        Update profile
+      </NavLink>
+    </div>
+    </div>
 
         <div className="card-content">
           <h5>Your three most recent highscores:</h5>
