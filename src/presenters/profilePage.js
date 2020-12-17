@@ -6,8 +6,47 @@ import multicolorCat from "../img/multicolorCat.jpg";
 import redCat from "../img/redCat.jpg";
 import greyCat from "../img/catprofilepicture.jpeg";
 import LoadingView from "../views/loadingView";
+import { updateUsername, updateFavoriteActor } from "../services/firebase";
+import M from "materialize-css";
 
 class ProfilePage extends Component {
+  state = {
+    userName: this.props.userName,
+    favoriteActor: this.props.favoriteActor,
+  };
+  componentDidMount() {
+    const options = { startingTop: "20%" };
+    M.Modal.init(this.modal, options);
+  }
+  handleUsernameChange = (e) => {
+    if (e.target.value !== "") {
+      this.setState({
+        userName: e.target.value,
+      });
+    }
+    return;
+  };
+
+  handleFavoriteActorChange = (e) => {
+    if (e.target.value !== "") {
+      this.setState({
+        favoriteActor: e.target.value,
+      });
+    }
+    return;
+  };
+
+  handleSubmit = (e) => {
+    const { userScores } = this.props;
+    const userName = this.state.userName;
+    const favActor = this.state.favoriteActor;
+    updateFavoriteActor(this.props.auth.uid, favActor);
+    updateUsername(userScores, this.props.auth.uid, userName);
+  };
+  setModal = (m) => {
+    this.modal = m;
+  };
+
   render() {
     const { auth, profile, highscorelist } = this.props;
 
@@ -26,7 +65,15 @@ class ProfilePage extends Component {
 
     if (highscorelist) {
       highscorelist.sort(compare);
-      return ProfilePageView({ profile, highscorelist, image });
+      return ProfilePageView({
+        profile,
+        highscorelist,
+        image,
+        handleUsernameChange: this.handleUsernameChange,
+        handleFavoriteActorChange: this.handleFavoriteActorChange,
+        setModal: this.setModal,
+        handleSubmit: this.handleSubmit,
+      });
     }
 
     return <LoadingView />;
@@ -38,6 +85,7 @@ const mapStateToProps = (state) => {
     auth: state.firebase.auth,
     profile: state.firebase.profile,
     highscorelist: state.firebase.profile.highscores,
+    userScores: state.firestore.ordered.userScores,
   };
 };
 function compare(a, b) {

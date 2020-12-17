@@ -190,3 +190,10 @@ code {
   background: rgba(238, 238, 238, 1);
   color: black;
 }
+
+#closebutton {
+  float: right;
+}
+#buttonInProfileX {
+  margin-right: 10px;
+}

@@ -37,6 +37,33 @@ export function updateHighscoreFirebase(score, userid, totalTime) {
 
   return db;
 }
+
+export function updateUsername(userScores, userid, targetValue) {
+  const user = db.collection("users").doc(userid);
+
+  user
+    .update({
+      username: targetValue,
+    })
+    .then(() => {
+      userScores.forEach((obj) => {
+        if (obj.userId === userid) {
+          const score = db.collection("userScores").doc(obj.id);
+          score.update({
+            username: targetValue,
+          });
+        }
+      });
+    });
+}
+export function updateFavoriteActor(userid, targetValue) {
+  const user = db.collection("users").doc(userid);
+  console.log(user);
+  console.log(userid);
+  user.update({
+    favoriteActor: targetValue,
+  });
+}
 const getTime = () => {
   const today = new Date();
   const date =
