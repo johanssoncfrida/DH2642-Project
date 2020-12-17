@@ -3,12 +3,9 @@ import { NavLink } from "react-router-dom";
 const UpdateProfileView = ({
     profile,
     username,
-    favoriteActor,
-    gender,
   handleUpdate,
   handleChange,
   handleChangeRadio,
-  authError,
 }) => {
   return (
       
@@ -64,27 +61,27 @@ const UpdateProfileView = ({
                 className="with-gap"
                 name="gender"
                 type="radio"
-                value="Male"
+                value="male"
               />
-              <span>Male</span>
+              <span>male</span>
             </label>
             <label>
               <input
                 className="with-gap"
                 name="gender"
                 type="radio"
-                value="Female"
+                value="female"
               />
-              <span>Female</span>
+              <span>female</span>
             </label>
             <label>
               <input
                 className="with-gap"
                 name="gender"
                 type="radio"
-                value="Other"
+                value="other"
               />
-              <span>Other</span>
+              <span>other</span>
             </label>
           </p>
         </div>

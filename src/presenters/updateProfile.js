@@ -11,9 +11,9 @@ class UpdateProfile extends Component {
   };
   handleChange = (e) => {
     this.setState({
-        username: this.props.username,
-        favoriteActor: this.props.favoriteActor,
-        gender: this.props.gender,
+        username: this.state.username,
+        favoriteActor: this.state.favoriteActor,
+        gender: this.state.gender,
     });
 
     this.setState({
@@ -23,8 +23,8 @@ class UpdateProfile extends Component {
 
   handleChangeRadio = (e) => {
     this.setState({
-        username: this.props.username,
-        favoriteActor: this.props.favoriteActor,
+        username: this.state.username,
+        favoriteActor: this.state.favoriteActor,
         gender: e.target.value,
     });
 };

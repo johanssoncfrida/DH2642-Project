@@ -67,11 +67,22 @@ export const updateUser = (user) => {
     const state = getState();
     const userId = state.firebase.auth.uid;
     var db = firebase.firestore();
+    const userScores = state.firestore.ordered.userScores;
 
     db.collection("users").doc(userId).update({
       username: user.username,
       favoriteActor: user.favoriteActor,
       gender: user.gender
+    })
+    .then(() => {
+      userScores.forEach((obj) => {
+        if (obj.userId === userId) {
+          const score = db.collection("userScores").doc(obj.id);
+          score.update({
+            username: user.username,
+          });
+        }
+      });
     })
     .then(() => {
       dispatch({ type: "UPDATE_SUCCESS" });
