@@ -12,7 +12,7 @@ const UpdateProfileView = ({
       
     <div className="card" id="profile">
       <div className="card-action right-align">
-        <NavLink to="/beforequiz" className="btn-small orange">
+        <NavLink to="/profile" className="btn-small orange">
           X
         </NavLink>
       </div>

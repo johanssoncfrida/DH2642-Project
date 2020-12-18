@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import { updateUser } from "../store/actions/authActions";
 import UpdateProfileView from "../views/updateProfileView";
 
@@ -34,6 +35,10 @@ class UpdateProfile extends Component {
   };
 
   render() {
+
+    if (!this.props.auth.uid) {
+      return <Redirect to="/" />;
+    }
 
     return UpdateProfileView({
         username: this.props.username,
