@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const UpdateProfileView = ({
     profile,
@@ -10,30 +11,30 @@ const UpdateProfileView = ({
   return (
       
     <div className="card" id="profile">
-        <form onSubmit={(e) => handleUpdate(e)}>
-            <div className="card-action right-align">
-            <NavLink to="/profile" className="btn orange">
-                X
-            </NavLink>
-            </div>
+      <div className="card-action right-align">
+        <NavLink to="/beforequiz" className="btn-small orange">
+          X
+        </NavLink>
+      </div>
+      
             
-            <div className="card-content light">
-            <div className="card grey lighten-4 horizontal">
-
-            <div className="black-text card-content">
-        
-            <h6>Current username: {profile.username}</h6>
-            <div className="change input-field">New username: 
+      <div className="card-content light">
+      <h4 className="orange-text">Edit profile</h4>
+      <p>Edit the parts of your profile information that you want to change, if you do not
+        want to change a specific part leave it unchanged.
+      </p>
+      <br />
+        <h6>Current username: {profile.username}</h6>
+        <div className="change input-field"> 
           <input
-            placeholder={username}
+            placeholder="New username"
             type="text"
             id="username"
-            onChange={(e) => handleChange(e)}
-          />
+            onChange={(e) => handleChange(e)}/>
         </div>
-            <br />
-            <h6>Current favorite actor: {profile.favoriteActor}</h6>
-            <div className="input-field">
+        <br />
+        <h6>Current favorite actor: {profile.favoriteActor}</h6>
+        <div className="input-field">
           <select
             className="browser-default"
             id="favoriteActor"
@@ -87,23 +88,13 @@ const UpdateProfileView = ({
         </div>
 
             <br />
-            
-        </div>
+            <div className="card-action right-align">
+            <Link to="/profile" className="btn-small orange" onClick={() => handleUpdate()}>Save Changes</Link>
       </div>
 
-    </div>
-    <div className="card-action right-align">
-    <div className="input-field">
-        <button onClick={(e) => handleUpdate(e)}>
-        <NavLink to="/profile" className="btn-small orange">
-        Update profile
-      </NavLink>
-      </button>
-    </div>
-    </div>
-      </form>
-  </div>
 
+    </div>
 
+    </div>
   )};
 export default UpdateProfileView;

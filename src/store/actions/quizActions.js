@@ -1,15 +1,13 @@
-import { updateHighscoreFirebase } from "../../services/firebase";
-
 export const saveScore = (totalTime) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     // make async call to db
     const firestore = getFirestore();
+    const dateTime = getTime();
     const state = getState();
     const username = state.firebase.profile.username;
     const userId = state.firebase.auth.uid;
     const score = state.quiz.currentScore;
-
-    updateHighscoreFirebase(score, userId, totalTime);
+    const user = firestore.collection("users").doc(userId);
 
     firestore
       .collection("userScores")
@@ -20,6 +18,15 @@ export const saveScore = (totalTime) => {
         quizScore: state.quiz.currentScore,
         createdAt: new Date(),
         userId: userId,
+      })
+      .then(() => {
+        user.update({
+          highscores: firestore.FieldValue.arrayUnion({
+            highscore: score,
+            time: totalTime,
+            createdAt: dateTime,
+          }),
+        })
       })
       .then(() => {
         dispatch({ type: "SAVE_SCORE", totalTime: totalTime });
@@ -72,4 +79,15 @@ export const totalTime = (time) => {
   return (dispatch, getState) => {
     dispatch({ type: "TOTAL_TIME", totalTime: time });
   };
+};
+
+const getTime = () => {
+  const today = new Date();
+  const date =
+    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+
+  const time = new Date().toTimeString().substr(0, 8);
+
+  const dateTime = date + " " + time;
+  return dateTime;
 };

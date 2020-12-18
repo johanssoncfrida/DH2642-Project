@@ -29,8 +29,7 @@ class UpdateProfile extends Component {
     });
 };
 
-  handleUpdate = (e) => {
-    e.preventDefault();
+  handleUpdate = () => {
     this.props.updateUser(this.state);
   };
 

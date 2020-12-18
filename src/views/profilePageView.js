@@ -24,11 +24,9 @@ const ProfilePageView = ({ profile, highscorelist, image }) => {
           </div>
         </div>
         <div className="card-action right-align">
-    <div className="input-field">
         <NavLink to="/updateProfile" className="btn-small orange">
-        Update profile
+        Edit profile
       </NavLink>
-    </div>
     </div>
 
         <div className="card-content">
