@@ -24,10 +24,10 @@ const ProfilePageView = ({ profile, highscorelist, image }) => {
           </div>
         </div>
         <div className="card-action right-align">
-        <NavLink to="/updateProfile" className="btn-small orange">
-        Edit profile
-      </NavLink>
-    </div>
+          <NavLink to="/updateProfile" className="btn-small orange">
+            Edit profile
+          </NavLink>
+        </div>
 
         <div className="card-content">
           <h5>Your three most recent highscores:</h5>
@@ -40,13 +40,17 @@ const ProfilePageView = ({ profile, highscorelist, image }) => {
               </tr>
             </thead>
             <tbody>
-              {highscorelist.slice(0, 3).map((scores, index) => (
-                <tr key={index}>
-                  <td>{scores.createdAt}</td>
-                  <td>{scores.highscore}</td>
-                  <td>{scores.time.toFixed(2)} s</td>
-                </tr>
-              ))}
+              {highscorelist.slice(0, 3).map((scores, index) =>
+                scores.time ? (
+                  <tr key={index}>
+                    <td>{scores.createdAt}</td>
+                    <td>{scores.highscore}</td>
+                    <td>{scores.time.toFixed(2)} s</td>
+                  </tr>
+                ) : (
+                  <tr key={index}></tr>
+                )
+              )}
             </tbody>
           </table>
         </div>
